@@ -123,10 +123,12 @@
     z-index: -1;
   }
 
-  /* Section — dashed rule between sections; horizontal padding matches column */
+  /* Section — dashed rule between sections; horizontal padding matches column.
+   * Vertical padding is generous so the ground-plane grid has room to
+   * reveal itself as content scrolls past. */
   section, header.hero {
     position: relative;
-    padding: 20px var(--pad);
+    padding: 44px var(--pad);
     border-top: 1px dashed var(--line);
   }
   section:first-of-type, header.hero { border-top: 0; }
