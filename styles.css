@@ -398,21 +398,103 @@
   .award-sub  { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); margin-top: 2px; }
   .award-year { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); }
 
-  /* ─── Capabilities (numbered rows) ─── */
-  .caps { display: flex; flex-direction: column; }
-  .cap {
-    display: grid; grid-template-columns: 44px 1fr;
-    gap: 12px; padding: 12px 0;
-    border-bottom: 1px dashed var(--line);
+  /* ─── Featured Publication Card (Token Wisdom) ─── */
+  .pub-card {
+    display: block;
+    padding: 22px 22px 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background:
+      linear-gradient(180deg, var(--card), var(--background)),
+      radial-gradient(circle at 15% 0%, color-mix(in oklab, var(--foreground) 6%, transparent), transparent 55%);
+    background-blend-mode: normal, normal;
+    position: relative;
+    overflow: hidden;
+    transition: transform .2s ease, border-color .2s ease;
   }
-  .cap:last-child { border-bottom: 0; }
+  .pub-card:hover {
+    text-decoration: none;
+    border-color: color-mix(in oklab, var(--foreground) 24%, var(--border));
+    transform: translateY(-1px);
+  }
+  .pub-card::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(
+      600px circle at var(--gx, 20%) var(--gy, 0%),
+      color-mix(in oklab, var(--foreground) 8%, transparent),
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+  }
+  .pub-card:hover::after { opacity: 1; }
+  .pub-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 8px;
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.14em;
+    background: var(--foreground); color: var(--background);
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .pub-title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 32px; line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+    margin: 0 0 6px;
+  }
+  .pub-lede {
+    color: var(--muted-fg);
+    font-size: 14px;
+    line-height: 1.55;
+    margin: 0 0 14px;
+    max-width: 52ch;
+  }
+  .pub-meta {
+    display: flex; justify-content: space-between;
+    align-items: baseline;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted-fg);
+  }
+  .pub-meta strong { color: var(--foreground); font-weight: 600; }
+  @media (max-width: 540px) {
+    .pub-title { font-size: 26px; }
+    .pub-card { padding: 18px 16px 14px; }
+  }
+
+  /* ─── Capabilities (2-column bento) ─── */
+  .caps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .cap {
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 10px;
+    padding: 14px 14px 14px 14px;
+    background: var(--card);
+    align-items: start;
+  }
+  .cap:nth-child(odd) { border-right: 1px dashed var(--line); }
+  .cap:not(:nth-last-child(-n+2)) { border-bottom: 1px dashed var(--line); }
+  .cap:nth-last-child(2):nth-child(odd) { border-bottom: 1px dashed var(--line); }  /* odd-count safety */
   .cap-n {
     font-family: var(--font-mono);
     font-size: 11px;
-    color: var(--fg-subtle, var(--muted-fg));
-    padding-top: 2px;
+    color: var(--muted-fg);
+    padding-top: 3px;
   }
-  .cap-body { display: flex; flex-direction: column; gap: 4px; }
+  .cap-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
   .cap-name {
     font-size: 14.5px; font-weight: 500;
     letter-spacing: -0.01em;
@@ -425,12 +507,200 @@
   .cap-sub li {
     font-family: var(--font-mono); font-size: 11px;
     color: var(--muted-fg);
-    padding-left: 14px;
+    padding-left: 12px;
     position: relative;
+    line-height: 1.4;
   }
   .cap-sub li::before {
     content: "→"; position: absolute; left: 0;
     color: var(--muted-fg); font-size: 10px;
+  }
+  @media (max-width: 540px) {
+    .caps { grid-template-columns: 1fr; }
+    .cap:nth-child(odd) { border-right: 0; }
+    .cap { border-bottom: 1px dashed var(--line); }
+    .cap:last-child { border-bottom: 0; }
+  }
+
+  /* ─── PORTED: Work Experience component (chanhdai-style timeline) ─── */
+  .xp { display: flex; flex-direction: column; }
+  .xp-group {
+    padding: 14px 0 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .xp-group:last-child { border-bottom: 0; }
+  .xp-company {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 6px;
+  }
+  .xp-logo {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 1px solid var(--border);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--muted-fg);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .xp-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--foreground);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .xp-current {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #0ea5e9;
+    margin-left: 2px;
+    box-shadow: 0 0 0 4px color-mix(in oklab, #0ea5e9 30%, transparent);
+    animation: xp-ping 1.8s ease-out infinite;
+  }
+  @keyframes xp-ping {
+    0%, 100% { box-shadow: 0 0 0 3px color-mix(in oklab, #0ea5e9 30%, transparent); }
+    50%      { box-shadow: 0 0 0 6px color-mix(in oklab, #0ea5e9 12%, transparent); }
+  }
+  @media (prefers-reduced-motion: reduce) { .xp-current { animation: none; } }
+
+  /* Positions list — vertical rail behind the icons */
+  .xp-positions {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 4px;
+    position: relative;
+  }
+  .xp-positions::before {
+    content: "";
+    position: absolute;
+    left: 12px; top: 12px; bottom: 12px;
+    width: 1px;
+    background: var(--line);
+  }
+  .xp-position {
+    position: relative;
+    padding: 6px 0;
+  }
+  .xp-trigger {
+    display: grid;
+    grid-template-columns: 24px 1fr 16px;
+    gap: 10px; align-items: center;
+    width: 100%;
+    padding: 6px 8px 6px 0;
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .xp-trigger:hover { background: color-mix(in oklab, var(--accent) 60%, transparent); }
+  .xp-icon {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--muted-fg);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .xp-icon svg { width: 12px; height: 12px; }
+  .xp-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--foreground);
+    margin: 0;
+    letter-spacing: -0.005em;
+  }
+  .xp-chevron {
+    width: 14px; height: 14px;
+    color: var(--muted-fg);
+    transition: transform .2s ease;
+  }
+  .xp-position[data-open="true"] .xp-chevron { transform: rotate(180deg); }
+  /* meta strip */
+  .xp-meta {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 8px;
+    padding: 2px 0 0 44px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted-fg);
+    font-variant-numeric: tabular-nums;
+    margin: 0;
+  }
+  .xp-meta dd { margin: 0; }
+  .xp-sep {
+    display: inline-block;
+    width: 1px; height: 10px;
+    background: var(--line);
+  }
+  .xp-dates .xp-dash { padding: 0 3px; color: var(--muted-fg); }
+  /* Collapsible body */
+  .xp-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows .22s ease;
+    padding-left: 44px;
+  }
+  .xp-position[data-open="true"] .xp-body { grid-template-rows: 1fr; }
+  .xp-body-inner {
+    overflow: hidden;
+    padding-top: 8px;
+    font-size: 13px;
+    color: var(--foreground);
+    line-height: 1.5;
+  }
+  .xp-body-inner p { margin: 0 0 8px; }
+  .xp-body-inner p:last-child { margin: 0; }
+  .xp-body-inner ul {
+    list-style: none;
+    padding: 0; margin: 4px 0 6px;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .xp-body-inner ul li {
+    padding-left: 14px;
+    position: relative;
+    color: var(--foreground);
+  }
+  .xp-body-inner ul li::before {
+    content: "·"; position: absolute; left: 4px;
+    color: var(--muted-fg);
+  }
+  /* Skill chips at the bottom of an expanded body */
+  .xp-skills {
+    list-style: none;
+    display: flex; flex-wrap: wrap; gap: 4px;
+    padding: 8px 0 0 44px;
+    margin: 0;
+  }
+  .xp-position[data-open="true"] .xp-skills { display: flex; }
+  .xp-position:not([data-open="true"]) .xp-skills { display: none; }
+  .xp-skills li {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    color: var(--muted-fg);
+    letter-spacing: 0.02em;
+  }
+  .xp-more {
+    display: block;
+    padding-left: 44px;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted-fg);
+  }
+  .xp-more:hover { color: var(--foreground); }
+  @media (max-width: 540px) {
+    .xp-meta, .xp-body, .xp-skills, .xp-more { padding-left: 40px; }
   }
 
   /* ─── Job block (Experience / Education) ─── */

@@ -187,65 +187,250 @@
   </section>
 
 
-  <!-- WORK EXPERIENCE -->
+  <!-- WORK EXPERIENCE — ported chanhdai component, expanded by default on /work -->
   <section id="experience" aria-labelledby="experience-t">
-    <h2 class="sh" id="experience-t"><span>Work Experience</span></h2>
+    <h2 class="sh" id="experience-t"><span>Work Experience</span><span class="more">Grouped by company</span></h2>
+    <div class="xp">
 
-    <div class="job current">
-      <div class="job-head">
-        <span class="job-co">The Artofficial Company</span>
-        <span class="job-when">2019 — Now</span>
+      <!-- The Artofficial Company · current -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">◈</span>
+          <h3 class="xp-name">The Artofficial Company</h3>
+          <span class="xp-current" aria-label="Current role"></span>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Chief Executive Officer</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>03.2019</span><span class="xp-dash">—</span><span>∞</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>Pioneertown, CA</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Strategy and creative direction across Sony MADO telepresence, SoFi Stadium Drive-In, Super Bowl LIV holograms, Wanderverse.</p>
+              <ul>
+                <li>Ship World's Firsts across immersive, location-based, and volumetric.</li>
+                <li>Own P&amp;L and creative direction for client engagements.</li>
+                <li>Advise partner studios and platforms on emerging-tech strategy.</li>
+              </ul>
+            </div></div>
+            <ul class="xp-skills"><li>Strategy</li><li>Immersive</li><li>Location-based</li><li>Volumetric</li><li>Creative Direction</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Chief Executive Officer</div>
-      <div class="job-meta"><span>Pioneertown, CA</span><span>·</span><span>Full-time</span></div>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <span class="job-co">Wall</span>
-        <span class="job-when">2021 — 2022</span>
+
+      <!-- Wall -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">W</span>
+          <h3 class="xp-name">Wall</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Chief Innovation Officer · Advisor</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Advisor</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2021</span><span class="xp-dash">—</span><span>2022</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>Bangalore, IN</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Founding advisor to the Wall creator-commerce platform.</p>
+            </div></div>
+            <ul class="xp-skills"><li>Innovation</li><li>Creator Economy</li><li>Advisory</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Chief Innovation Officer · Advisor</div>
-      <div class="job-meta"><span>Bangalore, IN</span></div>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <span class="job-co">Live Planet</span>
-        <span class="job-when">2016 — 2019</span>
+
+      <!-- Live Planet -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">LP</span>
+          <h3 class="xp-name">Live Planet</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Chief Strategy Officer · Co-Founder</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2016</span><span class="xp-dash">—</span><span>2019</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>San Jose, CA</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Co-founded the industry's first end-to-end live 360°/VR system. Featured on TechCrunch. Speaking circuit at IBC, NAB, NYVR, KOCCA, SXSW.</p>
+              <ul>
+                <li>Hardware/software co-design for the Live Planet camera + cloud pipeline.</li>
+                <li>Partnership development with Samsung, Facebook Oculus VR, IBM Watson, Adobe.</li>
+              </ul>
+            </div></div>
+            <ul class="xp-skills"><li>360° VR</li><li>Live-Streaming</li><li>Hardware</li><li>Platform</li><li>Partnerships</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Chief Strategy Officer · Co-Founder</div>
-      <div class="job-meta"><span>San Jose, CA</span></div>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <span class="job-co">Digital Domain</span>
-        <span class="job-when">2015</span>
+
+      <!-- Digital Domain — TWO positions on shared rail -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">DD</span>
+          <h3 class="xp-name">Digital Domain</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Senior Strategy &amp; Brand Consultant</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Consultant</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2015</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>Los Angeles, CA</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Shipped Nike × Neymar Jr. VR (Wieden+Kennedy), Evolution of Verse (Within), MTV VMAs Red Carpet.</p>
+            </div></div>
+            <ul class="xp-skills"><li>Strategy</li><li>VR</li><li>Brand</li></ul>
+          </li>
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Chief Innovation Officer</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2012</span><span class="xp-dash">—</span><span>2013</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>Los Angeles, CA</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Led the Immersive Media integration that culminated in the $100M Digital Domain acquisition.</p>
+              <ul>
+                <li>Pope Francis livestream (Vatican / World Youth Day).</li>
+                <li>Super Bowl XLVII · 360° Live Stream (NFL).</li>
+                <li>White Room 02B3 (Roddenberry Entertainment).</li>
+              </ul>
+            </div></div>
+            <ul class="xp-skills"><li>Innovation</li><li>M&amp;A Prep</li><li>360° Live</li><li>Immersive Media</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Senior Strategy &amp; Brand Consultant</div>
-      <div class="job-meta"><span>Los Angeles, CA</span></div>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <span class="job-co">Ncite</span>
-        <span class="job-when">2012 — 2014</span>
+
+      <!-- Ncite -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">nC</span>
+          <h3 class="xp-name">Ncite</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Head of Strategy · Co-Founder</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2012</span><span class="xp-dash">—</span><span>2014</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>Mexico City, MX</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Co-founded Ncite — a game-based-learning venture updating education for millions of Mexican youth. Coca-Cola Go4Gold, Telus Ignite.</p>
+            </div></div>
+            <ul class="xp-skills"><li>Game-Based Learning</li><li>Strategy</li><li>Curriculum</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Head of Strategy · Co-Founder</div>
-      <div class="job-meta"><span>Mexico City, MX</span></div>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <span class="job-co">Digital Domain</span>
-        <span class="job-when">2012 — 2013</span>
+
+      <!-- ATG · Against the Grain -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">AtG</span>
+          <h3 class="xp-name">ATG · Against the Grain</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Head of Strategy · Co-Founder</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2010</span><span class="xp-dash">—</span><span>2012</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>Las Vegas, NV</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Coca-Cola London Olympics Go4Gold. Will.I.Am × Intel Ultrabook launch at CES.</p>
+            </div></div>
+            <ul class="xp-skills"><li>Strategy</li><li>Brand</li><li>Live Events</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Chief Innovation Officer</div>
-      <div class="job-meta"><span>Los Angeles, CA</span></div>
-    </div>
-    <div class="job">
-      <div class="job-head">
-        <span class="job-co">ATG · Against the Grain</span>
-        <span class="job-when">2010 — 2012</span>
+
+      <!-- IQMZ -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">iQ</span>
+          <h3 class="xp-name">IQMZ</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Director of Strategy</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2009</span><span class="xp-dash">—</span><span>2012</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>New York, NY</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Strategy across brand launches and product intros.</p>
+            </div></div>
+            <ul class="xp-skills"><li>Strategy</li><li>Brand Launches</li></ul>
+          </li>
+        </ul>
       </div>
-      <div class="job-role">Head of Strategy · Co-Founder</div>
-      <div class="job-meta"><span>Las Vegas, NV</span></div>
+
+      <!-- Perks Consulting -->
+      <div class="xp-group">
+        <header class="xp-company">
+          <span class="xp-logo">PC</span>
+          <h3 class="xp-name">Perks Consulting</h3>
+        </header>
+        <ul class="xp-positions">
+          <li class="xp-position" data-open="true">
+            <button class="xp-trigger" type="button" aria-expanded="true">
+              <span class="xp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg></span>
+              <span class="xp-title">Director of Media and Marketing</span>
+              <svg class="xp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <dl class="xp-meta">
+              <dd>Full-time</dd><span class="xp-sep" aria-hidden="true"></span>
+              <dd class="xp-dates"><span>2010</span></dd>
+              <span class="xp-sep" aria-hidden="true"></span><dd>New York, NY</dd>
+            </dl>
+            <div class="xp-body"><div class="xp-body-inner">
+              <p>Media strategy and integrated campaigns.</p>
+            </div></div>
+            <ul class="xp-skills"><li>Media</li><li>Marketing</li></ul>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
@@ -318,6 +503,19 @@
     });
   })();
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Work Experience component — click a position row to expand/collapse
+  (function () {
+    document.querySelectorAll('.xp-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const li = btn.closest('.xp-position');
+        if (!li) return;
+        const open = li.getAttribute('data-open') === 'true';
+        li.setAttribute('data-open', String(!open));
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    });
+  })();
 
   // Glow Card cursor tracking (used on /work)
   (function () {
