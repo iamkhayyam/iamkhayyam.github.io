@@ -1,8 +1,10 @@
 # Khayyam Wakil
 
-> Award-winning Innovative Generalist. CEO of The Artofficial Company. Pioneering frontier technology for 20+ years. Specialist in World's Firsts across immersive media, experiential, strategy, and emerging tech. Based in Pioneertown, CA (YVR / LAX / LIS).
+> Innovative Generalist. CEO of The Artofficial Company. Founder of CacheCow. Constitutional Forcing researcher. 20+ years of World's Firsts across immersive media, frontier tech, and deep tech. Based in Pioneertown, CA (YVR / LAX / LIS).
 
-Khayyam Wakil (@iamkhayyam) is an Emmy-winning creative technologist and executive with a 20+ year track record of firsts: first 360° Super Bowl livestream, first pope livestream, first immersive Emmy, first Intel chipset-embedded 360 SDK, first holograms at the Super Bowl, first game-based learning curriculum at scale in Mexico, world's biggest drive-in at SoFi Stadium. His company The Artofficial Company (artofficial.ai) delivers World's Firsts for marquee clients across Sony, NFL, AEG, Warner Bros, and beyond.
+Khayyam Wakil (@iamkhayyam) finds the structural constraints that force new technology fields into existence — then builds the company around them before anyone else names the category. He has done this three times: Immersive Media (800% revenue growth, 25% global market share, $100M acquisition by Digital Domain), LivePlanet/VideoCoin (co-founded with Halsey Minor, $65M raised, $460M peak market cap), and The Artofficial Company (100+ patents across edge AI, photonics, and ternary computing; $750M US government contract scaling COVID rapid tests from 2M to 200M units/month; 90-foot projected holograms at Super Bowl LIV). CacheCow is the current commercial vertical: coordinated edge intelligence for livestock operations in a market with 90%+ awareness and under 8% adoption. Emmy Award. 3× Cannes Grand Prix. 26× Cannes Lions.
+
+His research programme — Constitutional Forcing — formalizes the instinct: every domain has structural constraints that uniquely determine its governing constants, forced by the algebra, not fitted from data. Nine papers, Lean4-verified, open-source.
 
 ## Pages
 
@@ -22,3 +24,4 @@ Khayyam Wakil (@iamkhayyam) is an Emmy-winning creative technologist and executi
 - LinkedIn: https://linkedin.com/in/iamkhayyam
 - GitHub: https://github.com/iamkhayyam
 - Company: https://artofficial.ai
+- CacheCow: https://cachecow.ai
