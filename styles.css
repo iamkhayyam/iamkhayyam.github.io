@@ -1227,3 +1227,221 @@
     .nav-links a { padding: 6px 6px; font-size: 11px; }
     .name { font-size: 28px; }
   }
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * SHARP SHADERS — nano-detail passes for architectural feel
+ * (registration marks, dot grid, ruler ticks, machined-edge shine)
+ * ═════════════════════════════════════════════════════════════════════ */
+
+/* ─── 1. Corner registration marks ────────────────────────────────────
+ * L-shaped brackets at all 4 corners. Uses ::before + ::after where
+ * each covers 2 diagonal corners via 4 layered linear-gradients. */
+.reg { position: relative; }
+.reg::before,
+.reg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+.reg::before {
+  /* Covers top-left + bottom-right corners */
+  background:
+    linear-gradient(currentColor, currentColor) top    left  / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) top    left  / 1px 6px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 1px 6px no-repeat;
+  color: color-mix(in oklab, var(--muted-fg) 55%, transparent);
+}
+.reg::after {
+  /* Covers top-right + bottom-left corners */
+  background:
+    linear-gradient(currentColor, currentColor) top    right / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) top    right / 1px 6px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left  / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left  / 1px 6px no-repeat;
+  color: color-mix(in oklab, var(--muted-fg) 55%, transparent);
+}
+
+/* Auto-apply to card surfaces */
+.glow-card,
+.dao,
+.gh-card,
+.pub-card,
+.testi,
+.wf-item,
+.stat,
+.play-item,
+.rate,
+.feat {
+  position: relative;
+}
+.glow-card::before,
+.glow-card::after,
+.dao::before,
+.dao::after,
+.gh-card::before,
+.gh-card::after,
+.pub-card::before,
+.pub-card::after,
+.testi::before,
+.testi::after,
+.wf-item::before,
+.wf-item::after,
+.stat::before,
+.stat::after,
+.play-item::before,
+.play-item::after,
+.feat::before,
+.feat::after {
+  pointer-events: none;
+  z-index: 1;
+}
+/* Reg brackets on cards that don't already use both pseudos.
+ * NOTE: .glow-card already uses ::before for its radial glow, and
+ *       .pub-card uses ::after for its cursor gradient — those two
+ *       cards intentionally skip the auto-apply and can be marked
+ *       with class="reg" if needed. */
+.dao::before,
+.gh-card::before,
+.testi::before,
+.wf-item::before,
+.stat::before,
+.play-item::before,
+.feat::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(currentColor, currentColor) top    left  / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) top    left  / 1px 6px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom right / 1px 6px no-repeat;
+  color: color-mix(in oklab, var(--muted-fg) 55%, transparent);
+  border-radius: inherit;
+}
+.dao::after,
+.gh-card::after,
+.testi::after,
+.wf-item::after,
+.stat::after,
+.play-item::after,
+.feat::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(currentColor, currentColor) top    right / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) top    right / 1px 6px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left  / 6px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left  / 1px 6px no-repeat;
+  color: color-mix(in oklab, var(--muted-fg) 55%, transparent);
+  border-radius: inherit;
+}
+
+
+/* ─── 2. Hairline dot grid on frame ───────────────────────────────────
+ * 0.5px dots at 16×16, ~5% opacity. Invisible unless you look. */
+.frame {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    color-mix(in oklab, var(--foreground) 12%, transparent) 0.6px,
+    transparent 1px
+  );
+  background-size: 16px 16px;
+  background-position: 8px 8px;
+}
+
+
+/* ─── 3. Ruler tick marks on section rules ────────────────────────────
+ * Major 3px ticks every 100px, minor 1.5px ticks every 20px. Anchored
+ * to the top of each section (below its inherited dashed border-top). */
+section {
+  position: relative;
+}
+section:not(:first-of-type)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background:
+    /* Major ticks — 1px wide, 3px tall, every 100px */
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 99.5px,
+      color-mix(in oklab, var(--muted-fg) 70%, transparent) 99.5px,
+      color-mix(in oklab, var(--muted-fg) 70%, transparent) 100.5px,
+      transparent 100.5px,
+      transparent 100px
+    ),
+    /* Minor ticks — 1px wide, 1.5px tall, every 20px */
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 19.5px,
+      color-mix(in oklab, var(--muted-fg) 30%, transparent) 19.5px,
+      color-mix(in oklab, var(--muted-fg) 30%, transparent) 20.5px,
+      transparent 20.5px,
+      transparent 20px
+    );
+  background-size: 100% 3px, 100% 1.5px;
+  background-position: 0 1px, 0 1px;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ─── 4. Machined-edge conic shine on card hover ──────────────────────
+ * 1px conic-gradient ring visible only when hovering. Uses ::after +
+ * mask-composite trick to constrain the gradient to a 1px border.
+ * Slow rotation via @property so the conic angle interpolates smoothly.
+ * Applied only to .glow-card since that's the interactive hero surface;
+ * .pub-card and DAO tiles already have their own hover treatments. */
+@property --shine-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--shine-angle),
+    transparent 0deg,
+    transparent 60deg,
+    color-mix(in oklab, var(--foreground) 50%, transparent) 90deg,
+    transparent 120deg,
+    transparent 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+  z-index: 2;
+  --shine-angle: 0deg;
+  animation: shine-rot 3.4s linear infinite;
+  animation-play-state: paused;
+}
+.glow-card:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+@keyframes shine-rot {
+  to { --shine-angle: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-card::after { animation: none; }
+}
