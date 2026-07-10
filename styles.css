@@ -1342,16 +1342,23 @@
 }
 
 
-/* ─── 2. Hairline dot grid on frame ───────────────────────────────────
- * 0.5px dots at 16×16, ~5% opacity. Invisible unless you look. */
-.frame {
+/* ─── 2. Hairline dot grid — ground plane on <body> ───────────────────
+ * 0.6px dots at 16×16, ~12% opacity. Sits on <body> so it fills the
+ * whole viewport (past the content column into the margins). The frame
+ * floats above it at ~70% alpha so the grid bleeds through subtly. */
+body {
   background-image: radial-gradient(
     circle at 1px 1px,
-    color-mix(in oklab, var(--foreground) 12%, transparent) 0.6px,
+    color-mix(in oklab, var(--foreground) 14%, transparent) 0.6px,
     transparent 1px
   );
   background-size: 16px 16px;
   background-position: 8px 8px;
+  background-attachment: fixed;
+  /* background-color still inherits from the earlier body rule */
+}
+.frame {
+  background-color: color-mix(in oklab, var(--background) 70%, transparent);
 }
 
 
