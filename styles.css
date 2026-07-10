@@ -908,6 +908,7 @@
     position: relative;
     overflow: hidden;
     isolation: isolate;
+    border-top: 0; /* seamless blend with the section above */
   }
   .contact-shader > .signature-shader {
     position: absolute;
@@ -919,6 +920,21 @@
     z-index: 0;
     pointer-events: none;
     opacity: 0.35;
+    /* Fade the canvas from invisible at the top to full at ~18% down */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 18%,
+      #000 92%,
+      color-mix(in oklab, #000 70%, transparent) 100%
+    );
+            mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 18%,
+      #000 92%,
+      color-mix(in oklab, #000 70%, transparent) 100%
+    );
   }
   /* Radial veil hushes the shader where text lives */
   .contact-shader::before {
@@ -933,6 +949,19 @@
     );
     z-index: 1;
     pointer-events: none;
+    /* Same top-fade mask so the veil also seamlessly meets the section above */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 18%,
+      #000 100%
+    );
+            mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 18%,
+      #000 100%
+    );
   }
   .contact-shader > *:not(canvas) { position: relative; z-index: 2; }
   /* Section headers on the shader read stronger */
