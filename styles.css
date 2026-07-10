@@ -903,12 +903,13 @@
     user-select: none;
     display: block;
   }
-  /* Contact + footer merged — shader fills the whole container as background */
+  /* Contact + footer merged — shader clipped to a band at the bottom */
   .contact-shader {
     position: relative;
     overflow: hidden;
     isolation: isolate;
-    border-top: 0; /* seamless blend with the section above */
+    border-top: 0;
+    padding-bottom: 72px; /* leave room for the shader band under the CTAs */
   }
   .contact-shader > .signature-shader {
     position: absolute;
@@ -919,47 +920,51 @@
     background: transparent;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.35;
-    /* Fade the canvas from invisible at the top to full at ~18% down */
+    opacity: 0.55;
+    /* Hide top 55%, fade in through 75%, hold full, soft-fade the very bottom */
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 18%,
-      #000 92%,
-      color-mix(in oklab, #000 70%, transparent) 100%
+      transparent 55%,
+      #000 78%,
+      #000 96%,
+      color-mix(in oklab, #000 60%, transparent) 100%
     );
             mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 18%,
-      #000 92%,
-      color-mix(in oklab, #000 70%, transparent) 100%
+      transparent 55%,
+      #000 78%,
+      #000 96%,
+      color-mix(in oklab, #000 60%, transparent) 100%
     );
   }
-  /* Radial veil hushes the shader where text lives */
+  /* Light veil only over the shader band so nothing shows through the text zone */
   .contact-shader::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse at center,
-      color-mix(in oklab, var(--background) 88%, transparent) 0%,
-      color-mix(in oklab, var(--background) 70%, transparent) 40%,
-      color-mix(in oklab, var(--background) 30%, transparent) 100%
+    background: linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--background) 60%, transparent) 0%,
+      color-mix(in oklab, var(--background) 40%, transparent) 80%,
+      color-mix(in oklab, var(--background) 55%, transparent) 100%
     );
     z-index: 1;
     pointer-events: none;
-    /* Same top-fade mask so the veil also seamlessly meets the section above */
+    /* Only apply veil where the shader is */
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 18%,
+      transparent 55%,
+      #000 78%,
       #000 100%
     );
             mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 18%,
+      transparent 55%,
+      #000 78%,
       #000 100%
     );
   }
