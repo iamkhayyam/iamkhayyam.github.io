@@ -21,6 +21,3 @@ node_modules/
 .idea/
 .vscode/
 *.log
-
-# local preview + claude config
-.claude/
