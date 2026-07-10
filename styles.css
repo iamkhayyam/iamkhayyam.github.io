@@ -522,6 +522,40 @@
     .cap:last-child { border-bottom: 0; }
   }
 
+  /* World's Firsts detail — sub-panel below the bento */
+  .wf-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 10px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .wf-item {
+    padding: 14px 12px 12px;
+    background: var(--card);
+    display: flex; flex-direction: column; gap: 6px;
+    align-items: flex-start;
+  }
+  .wf-item + .wf-item { border-left: 1px dashed var(--line); }
+  .wf-glyph {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted-fg);
+    text-transform: uppercase;
+  }
+  .wf-name {
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--foreground);
+    letter-spacing: -0.005em;
+  }
+  @media (max-width: 540px) {
+    .wf-grid { grid-template-columns: 1fr; }
+    .wf-item + .wf-item { border-left: 0; border-top: 1px dashed var(--line); }
+  }
+
   /* ─── PORTED: Work Experience component (chanhdai-style timeline) ─── */
   .xp { display: flex; flex-direction: column; }
   .xp-group {
