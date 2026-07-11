@@ -115,16 +115,11 @@
     <h2 class="sh" id="github-t"><span>GitHub Contributions</span><a class="more" href="https://github.com/iamkhayyam">@iamkhayyam →</a></h2>
     <div class="gh-card">
       <div class="gh-head">
-        <span>Past 365 days · <strong>github.com/iamkhayyam</strong></span>
+        <span>Past 365 days · <strong>github.com/iamkhayyam</strong> · <span id="ghTotal">—</span> contributions</span>
         <a href="https://github.com/iamkhayyam">View on GitHub →</a>
       </div>
       <div class="gh-chart-wrap">
-        <img
-          src="https://ghchart.rshah.org/216e39/iamkhayyam"
-          alt="Khayyam Wakil's GitHub contribution graph for the past year"
-          loading="lazy"
-          onerror="this.parentElement.innerHTML='<div style=&quot;font-family:var(--font-mono);font-size:12px;color:var(--muted-fg);text-align:center;padding:24px 0;&quot;>Contribution graph unavailable — <a href=&quot;https://github.com/iamkhayyam&quot;>see github.com/iamkhayyam</a></div>'"
-        />
+        <div id="ghGrid" class="gh-grid" data-username="iamkhayyam" aria-label="GitHub contribution graph for the past year"></div>
       </div>
       <div class="gh-legend">
         <span>Less</span>
@@ -644,5 +639,6 @@
   })();
 </script>
 <script src="shader-footer.js" defer></script>
+<script src="github-graph.js" defer></script>
 </body>
 </html>

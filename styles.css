@@ -1217,12 +1217,28 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
   }
-  .gh-chart-wrap img {
-    display: block; width: 100%; min-width: 600px;
-    height: auto;
-    filter: grayscale(1) contrast(1.05);
+  /* Contribution grid — 53 columns × 7 rows, filled column-major.
+   * Cells use the shared .cell / .cell.l1..l4 classes below. */
+  .gh-grid {
+    display: grid;
+    grid-template-columns: repeat(53, 10px);
+    grid-template-rows: repeat(7, 10px);
+    grid-auto-flow: column;
+    gap: 3px;
+    padding: 4px 0;
+    width: max-content;
   }
-  html[data-theme="dark"] .gh-chart-wrap img { filter: grayscale(1) invert(1) contrast(1.05); }
+  /* Shared cell styles (used by .gh-grid AND .gh-legend) */
+  .cell {
+    width: 10px; height: 10px; border-radius: 2px;
+    background: color-mix(in oklab, var(--foreground) 6%, var(--background));
+    border: 1px solid var(--border);
+    display: inline-block;
+  }
+  .cell.l1 { background: color-mix(in oklab, var(--foreground) 20%, var(--background)); border-color: transparent; }
+  .cell.l2 { background: color-mix(in oklab, var(--foreground) 42%, var(--background)); border-color: transparent; }
+  .cell.l3 { background: color-mix(in oklab, var(--foreground) 66%, var(--background)); border-color: transparent; }
+  .cell.l4 { background: var(--foreground); border-color: transparent; }
   .gh-legend {
     display: flex; align-items: center; gap: 6px;
     justify-content: flex-end;
@@ -1230,16 +1246,6 @@
     font-family: var(--font-mono); font-size: 10px;
     color: var(--muted-fg);
   }
-  .gh-legend .cell {
-    width: 10px; height: 10px; border-radius: 2px;
-    background: color-mix(in oklab, var(--foreground) 6%, var(--background));
-    border: 1px solid var(--border);
-    display: inline-block;
-  }
-  .gh-legend .cell.l1 { background: color-mix(in oklab, var(--foreground) 20%, var(--background)); border-color: transparent; }
-  .gh-legend .cell.l2 { background: color-mix(in oklab, var(--foreground) 42%, var(--background)); border-color: transparent; }
-  .gh-legend .cell.l3 { background: color-mix(in oklab, var(--foreground) 66%, var(--background)); border-color: transparent; }
-  .gh-legend .cell.l4 { background: var(--foreground); border-color: transparent; }
 
   /* ─── PORTED: Spinning Circular Text ─── */
   .spinner-wrap {
