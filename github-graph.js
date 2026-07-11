@@ -41,6 +41,13 @@
       })
       .join('');
     grid.innerHTML = html;
+
+    // On narrow viewports the grid overflows horizontally — land on the
+    // most recent weeks (right edge), not July of last year.
+    var wrap = grid.closest('.gh-chart-wrap') || grid.parentElement;
+    if (wrap && wrap.scrollWidth > wrap.clientWidth) {
+      wrap.scrollLeft = wrap.scrollWidth - wrap.clientWidth;
+    }
   } catch (err) {
     grid.outerHTML =
       '<div style="text-align:center;padding:24px 0;font-family:var(--font-mono);font-size:12px;color:var(--muted-fg);">' +
