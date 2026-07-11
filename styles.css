@@ -1217,6 +1217,25 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
             mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
   }
+  /* Month labels — same 53-column track as the grid so labels align
+   * to the week where each month starts. */
+  .gh-months {
+    display: grid;
+    grid-template-columns: repeat(53, 10px);
+    gap: 3px;
+    width: max-content;
+    margin-bottom: 4px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.02em;
+    color: var(--muted-fg);
+  }
+  .gh-months span {
+    grid-row: 1;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
   /* Contribution grid — 53 columns × 7 rows, filled column-major.
    * Cells use the shared .cell / .cell.l1..l4 classes below. */
   .gh-grid {

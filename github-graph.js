@@ -48,6 +48,36 @@
       .join('');
     grid.innerHTML = html;
 
+    // Month labels across the top, aligned to the week column where each
+    // month begins. Year marked on the first label and every January.
+    var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var labels = [];
+    var prevMonth = -1;
+    var lastLabelCol = -3;
+    for (var c = 0; c < 53; c++) {
+      var d0 = days[c * 7];
+      if (!d0) break;
+      var dt = new Date(d0.date + 'T00:00:00');
+      var m = dt.getMonth();
+      if (m !== prevMonth && c - lastLabelCol >= 2) {
+        var text = MONTHS[m];
+        if (labels.length === 0 || m === 0) {
+          text += ' ’' + String(dt.getFullYear()).slice(-2);
+        }
+        labels.push('<span style="grid-column: ' + (c + 1) + ' / span ' + Math.min(5, 53 - c) + '">' + text + '</span>');
+        lastLabelCol = c;
+      }
+      prevMonth = m;
+    }
+    var prevMonths = grid.parentNode.querySelector('.gh-months');
+    if (prevMonths) prevMonths.remove();
+    var monthsEl = document.createElement('div');
+    monthsEl.className = 'gh-months';
+    monthsEl.setAttribute('aria-hidden', 'true');
+    monthsEl.innerHTML = labels.join('');
+    grid.parentNode.insertBefore(monthsEl, grid);
+
     // On narrow viewports the grid overflows horizontally — land on the
     // most recent weeks (right edge), not July of last year.
     var wrap = grid.closest('.gh-chart-wrap') || grid.parentElement;
