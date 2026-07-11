@@ -1024,7 +1024,6 @@
     line-height: 1.05;
     letter-spacing: 0;
     font-style: italic;
-    color: var(--foreground);
     margin: 0;
     padding: 0;
     white-space: pre;
@@ -1032,9 +1031,25 @@
     max-width: 100%;
     text-align: left;
     display: inline-block;
+    /* Fluid gradient painted into the glyphs */
+    background: linear-gradient(
+      110deg,
+      var(--foreground) 20%,
+      color-mix(in oklab, var(--info) 60%, var(--foreground)) 40%,
+      color-mix(in oklab, #a855f7 60%, var(--foreground)) 55%,
+      color-mix(in oklab, var(--info) 60%, var(--foreground)) 70%,
+      var(--foreground) 90%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    /* Left-to-right reveal on load, then infinite fluid flow */
     -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 var(--wm-reveal, 100%), transparent var(--wm-reveal, 100%));
             mask-image: linear-gradient(90deg, #000 0%, #000 var(--wm-reveal, 100%), transparent var(--wm-reveal, 100%));
-    animation: wordmark-reveal 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards;
+    animation: wordmark-reveal 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.25s forwards,
+               fluid-flow 8s ease-in-out infinite;
     --wm-reveal: 0%;
   }
   .ascii-wordmark .ascii-line { display: block; }
