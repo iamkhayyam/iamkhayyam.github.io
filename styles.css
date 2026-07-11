@@ -1236,6 +1236,25 @@
     overflow: visible;
   }
 
+  /* Year labels — same column track, below the grid. */
+  .gh-years {
+    display: grid;
+    grid-template-columns: repeat(53, 10px);
+    gap: 3px;
+    width: max-content;
+    margin-top: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--muted-fg);
+  }
+  .gh-years span {
+    grid-row: 1;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
   /* Contribution grid — 53 columns × 7 rows, filled column-major.
    * Cells use the shared .cell / .cell.l1..l4 classes below. */
   .gh-grid {

@@ -53,20 +53,24 @@
     var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var labels = [];
+    var years = [];
     var prevMonth = -1;
+    var prevYear = -1;
     var lastLabelCol = -3;
     for (var c = 0; c < 53; c++) {
       var d0 = days[c * 7];
       if (!d0) break;
       var dt = new Date(d0.date + 'T00:00:00');
       var m = dt.getMonth();
+      var y = dt.getFullYear();
       if (m !== prevMonth && c - lastLabelCol >= 2) {
-        var text = MONTHS[m];
-        if (labels.length === 0 || m === 0) {
-          text += ' ’' + String(dt.getFullYear()).slice(-2);
-        }
-        labels.push('<span style="grid-column: ' + (c + 1) + ' / span ' + Math.min(5, 53 - c) + '">' + text + '</span>');
+        labels.push('<span style="grid-column: ' + (c + 1) + ' / span ' + Math.min(5, 53 - c) + '">' + MONTHS[m] + '</span>');
         lastLabelCol = c;
+      }
+      // Year label at the column where each new year begins
+      if (y !== prevYear) {
+        years.push('<span style="grid-column: ' + (c + 1) + ' / span ' + Math.min(6, 53 - c) + '">' + y + '</span>');
+        prevYear = y;
       }
       prevMonth = m;
     }
@@ -77,6 +81,14 @@
     monthsEl.setAttribute('aria-hidden', 'true');
     monthsEl.innerHTML = labels.join('');
     grid.parentNode.insertBefore(monthsEl, grid);
+
+    var prevYears = grid.parentNode.querySelector('.gh-years');
+    if (prevYears) prevYears.remove();
+    var yearsEl = document.createElement('div');
+    yearsEl.className = 'gh-years';
+    yearsEl.setAttribute('aria-hidden', 'true');
+    yearsEl.innerHTML = years.join('');
+    grid.parentNode.insertBefore(yearsEl, grid.nextSibling);
 
     // On narrow viewports the grid overflows horizontally — land on the
     // most recent weeks (right edge), not July of last year.
