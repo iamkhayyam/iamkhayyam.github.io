@@ -29,9 +29,16 @@
 
     if (totalEl) totalEl.textContent = totalLast.toLocaleString();
 
-    // Take the trailing 371 days so the grid aligns to full weeks.
-    // Then chunk into 53 columns × 7 rows in column-major order.
-    var days = contributions.slice(-371);
+    // Anchor to today (the fetch date). Drop any future-dated cells the
+    // API may pad the current week with, then take exactly the trailing
+    // 365 days so the graph ends on today. Chunked 7 rows, column-major.
+    var t = new Date();
+    var todayStr = t.getFullYear() + '-' +
+      String(t.getMonth() + 1).padStart(2, '0') + '-' +
+      String(t.getDate()).padStart(2, '0');
+    var days = contributions
+      .filter(function (d) { return d.date <= todayStr; })
+      .slice(-365);
     var html = days
       .map(function (d, i) {
         var lvl = d.level || 0;
