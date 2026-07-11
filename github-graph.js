@@ -33,11 +33,17 @@
     // Then chunk into 53 columns × 7 rows in column-major order.
     var days = contributions.slice(-371);
     var html = days
-      .map(function (d) {
+      .map(function (d, i) {
         var lvl = d.level || 0;
         var cls = 'cell' + (lvl ? ' l' + lvl : '');
         var title = d.date + ': ' + (d.count || 0) + ' contribution' + (d.count === 1 ? '' : 's');
-        return '<span class="' + cls + '" title="' + title + '"></span>';
+        // Stagger: pop in week by week (column-major), then a diagonal
+        // glint sweeps through after the wave lands.
+        var col = Math.floor(i / 7);
+        var row = i % 7;
+        var pop = col * 14;
+        var glint = 1100 + (col + row) * 9;
+        return '<span class="' + cls + '" title="' + title + '" style="--d:' + pop + 'ms;--s:' + glint + 'ms"></span>';
       })
       .join('');
     grid.innerHTML = html;

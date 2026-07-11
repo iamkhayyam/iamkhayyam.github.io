@@ -1239,6 +1239,26 @@
   .cell.l2 { background: color-mix(in oklab, var(--foreground) 42%, var(--background)); border-color: transparent; }
   .cell.l3 { background: color-mix(in oklab, var(--foreground) 66%, var(--background)); border-color: transparent; }
   .cell.l4 { background: var(--foreground); border-color: transparent; }
+  /* Commit wave-in + end glint (grid only — legend cells stay static).
+   * --d / --s stagger delays are set inline per cell by github-graph.js. */
+  .gh-grid .cell {
+    opacity: 0;
+    animation:
+      gh-pop 0.35s cubic-bezier(0.2, 0.7, 0.3, 1.2) var(--d, 0ms) forwards,
+      gh-glint 0.8s ease-out var(--s, 1200ms) 1;
+  }
+  @keyframes gh-pop {
+    from { opacity: 0; transform: scale(0.3); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes gh-glint {
+    0%   { filter: brightness(1); }
+    35%  { filter: brightness(2.1); }
+    100% { filter: brightness(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gh-grid .cell { opacity: 1; animation: none; }
+  }
   .gh-legend {
     display: flex; align-items: center; gap: 6px;
     justify-content: flex-end;
