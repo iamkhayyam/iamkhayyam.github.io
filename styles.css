@@ -1023,6 +1023,7 @@
     font-size: clamp(5px, 1.15vw, 12px);
     line-height: 1.05;
     letter-spacing: 0;
+    font-style: italic;
     color: var(--foreground);
     margin: 0;
     padding: 0;
