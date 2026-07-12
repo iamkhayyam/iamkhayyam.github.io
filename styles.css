@@ -951,7 +951,7 @@
     background: transparent;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.70;
+    opacity: 0.52;
     /* 0% at top, ~50% at "Book a call" (~36% down), full at 65%, fade at bottom */
     -webkit-mask-image: linear-gradient(
       to bottom,
