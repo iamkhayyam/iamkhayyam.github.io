@@ -91,16 +91,6 @@
     border-radius: 5px;
     font-family: var(--font-serif); font-size: 13px; font-weight: 600;
   }
-  .nav-links {
-    display: flex; gap: 2px;
-    font-family: var(--font-mono); font-size: 12px;
-  }
-  .nav-links a {
-    padding: 6px 8px;
-    color: var(--muted-fg);
-    border-radius: 6px;
-  }
-  .nav-links a:hover { background: var(--accent); color: var(--foreground); }
   .nav-right { display: inline-flex; align-items: center; gap: 6px; }
   .icon-btn {
     width: 30px; height: 30px;
@@ -113,6 +103,38 @@
     font-family: var(--font-mono); font-size: 11px;
     padding: 4px 8px; border: 1px dashed var(--line);
     color: var(--muted-fg);
+  }
+
+  /* GOTO jump menu — the 1998 select-nav, shown in place of links on small screens */
+  .nav-goto { display: none; position: relative; }
+  .nav-goto select {
+    appearance: none; -webkit-appearance: none;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--foreground);
+    background: transparent;
+    border: 1px dashed var(--line);
+    border-radius: 6px;
+    padding: 4px 24px 4px 8px;
+    min-width: 128px;
+    cursor: pointer;
+  }
+  .nav-goto::before {
+    content: "GOTO:";
+    position: absolute; left: -44px; top: 50%; transform: translateY(-50%);
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.08em; color: var(--muted-fg);
+    pointer-events: none;
+  }
+  .nav-goto::after {
+    content: "▾";
+    position: absolute; right: 9px; top: 50%; transform: translateY(-50%);
+    font-size: 10px; color: var(--muted-fg);
+    pointer-events: none;
+  }
+  /* The select IS the nav, at every size */
+  .nav-goto { display: inline-flex; align-items: center; margin-left: 44px; }
+  @media (max-width: 620px) {
+    .gh-stars { display: none; }
   }
 
   /* Screen line — hairline that extends past the column to the browser edges */
@@ -332,6 +354,7 @@
   }
   .row:last-child { border-bottom: 0; }
   .row-year { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); }
+  .row-glyph { font-size: 13px; line-height: 1; }
   .row-title { color: var(--foreground); }
   .row-title a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
   .row-title a:hover { text-decoration-color: currentColor; }
@@ -877,6 +900,7 @@
     border: 1px solid var(--foreground);
     background: var(--foreground); color: var(--background);
     border-radius: 6px;
+    appearance: none; cursor: pointer;
   }
   .cta:hover { background: transparent; color: var(--foreground); }
   .cta.secondary { background: transparent; color: var(--foreground); }
@@ -911,9 +935,11 @@
     border-top: 0;
     /* Break out of the 640px frame horizontally, but keep text inside the column
      * via matching padding. Section itself becomes 100vw wide → shader canvas
-     * fills the full viewport as background. */
-    margin-left:  calc(320px - 50vw);
-    margin-right: calc(320px - 50vw);
+     * fills the full viewport as background. min() keeps the margins ≤0 when
+     * the viewport is narrower than the frame (phones), where 320px - 50vw
+     * would go positive and crush the section. */
+    margin-left:  calc(min(320px, 50vw) - 50vw);
+    margin-right: calc(min(320px, 50vw) - 50vw);
     padding: 44px max(20px, calc(50vw - 320px)) 72px;
   }
   .contact-shader > .signature-shader {
@@ -1422,7 +1448,9 @@
     .kv > div:nth-last-child(-n+4) { border-bottom: 1px dashed var(--line); }
     .kv > div:nth-last-child(-n+2) { border-bottom: 0; }
     .row { grid-template-columns: 40px 1fr auto; }
-    .nav-links a { padding: 6px 6px; font-size: 11px; }
+    /* Experience rows carry long date·location chips — give them their own line */
+    #experience .row { grid-template-columns: 40px 1fr; }
+    #experience .row-meta { grid-column: 2; justify-self: start; }
     .name { font-size: 28px; }
   }
 

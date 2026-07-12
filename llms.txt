@@ -8,13 +8,19 @@ His research programme — Constitutional Forcing — formalizes the instinct: e
 
 ## Pages
 
-- [Home](https://iamkhayyam.xyz/): Overview, featured work, capabilities, experience, speaking, writing, contact
+- [Home](https://iamkhayyam.xyz/): Overview, GitHub contributions, featured work, capabilities, experience, speaking, writing, contact
 - [Work](https://iamkhayyam.xyz/work/): Capabilities, 30+ selected projects, full work history, advisory, education
-- [Awards](https://iamkhayyam.xyz/awards/): Complete award record — Emmy, ×3 Cannes Grand Prix, ×26 Lions, One Show, D&AD, Gunn Report
+- [Projects](https://iamkhayyam.xyz/projects/): Selected projects and the award tour — Emmy, 3× Cannes Grand Prix, 26× Cannes Lions, One Show, D&AD, Gunn Report
 - [Speaking](https://iamkhayyam.xyz/speaking/): 34 talks (2010–2022) — SXSW, Consensus, IBC, NAB, CES, KOCCA, Slush Play, Paramount Studios
-- [Writing](https://iamkhayyam.xyz/writing/): 2 books, 5+ essays, press features in WSJ, Fortune, TechCrunch, NBC, Slate
-- [Play](https://iamkhayyam.xyz/play/): Side projects and experiments
-- [Learn](https://iamkhayyam.xyz/learn/): Learning resources and knowledge sharing
+- [Play](https://iamkhayyam.xyz/play/): Concepts, domains, sandboxes — and the DAOs he contributes to
+- [Learn](https://iamkhayyam.xyz/learn/): Near misses, ongoing research threads, and the education receipts
+- [Writing](https://iamkhayyam.xyz/writing/): 2 books, essays, press features in WSJ, Fortune, TechCrunch, NBC, Slate
+
+## Machine-Readable
+
+- [Full profile](https://iamkhayyam.xyz/llms-full.txt): Complete structured biography — ventures, 30+ projects, awards, 34 talks, writing, press, advisory, education, DAOs, 155+ brand roster
+- [Sitemap](https://iamkhayyam.xyz/sitemap.xml)
+- [Social card](https://iamkhayyam.xyz/og.png): 1200×630 profile image
 
 ## Contact
 

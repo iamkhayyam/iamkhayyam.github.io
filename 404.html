@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>404 — Khayyam Wakil</title>
+<meta name="description" content="Page not found. Not in YVR, not in LAX, not in LIS.">
+<meta name="theme-color" content="#ffffff">
+<meta name="author" content="Khayyam Wakil">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+
+<!-- Served for any missing path on GitHub Pages, so every URL must be absolute -->
+<link rel="stylesheet" href="/styles.css">
+<style>
+  /* 404 wordmark — same treatment as the hero, sized for 27 columns */
+  .ascii-404 { font-size: clamp(16px, 5.2vw, 34px); }
+
+  .hero-404 { padding: 44px var(--pad) 36px; }
+
+  /* Terminal trace */
+  .term {
+    margin: 0 var(--pad);
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    line-height: 1.9;
+    border: 1px dashed var(--line);
+    border-radius: var(--r);
+    padding: 14px 16px;
+    overflow-x: auto;
+  }
+  .term .t-line { display: block; white-space: pre-wrap; word-break: break-all; opacity: 0; animation: t-in .3s ease forwards; }
+  .term .t-line:nth-child(1) { animation-delay: 1.9s; }
+  .term .t-line:nth-child(2) { animation-delay: 2.3s; }
+  .term .t-line:nth-child(3) { animation-delay: 2.7s; }
+  .term .t-line:nth-child(4) { animation-delay: 3.1s; }
+  .term .t-line:nth-child(5) { animation-delay: 3.5s; }
+  @keyframes t-in { to { opacity: 1; } }
+  .term .ps { color: var(--success); }
+  .term .out { color: var(--muted-fg); }
+  .term .hard { font-weight: 700; }
+  .term .cursor {
+    display: inline-block; width: 7px; height: 13px;
+    background: var(--foreground); vertical-align: -2px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .term .t-line { animation: none; opacity: 1; }
+    .term .cursor { animation: none; }
+  }
+
+  /* Route index reuses .list/.row from styles.css; numbers in the year slot */
+  .routes-note {
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+    color: var(--muted-fg);
+    transform: rotate(-2deg);
+    margin: 18px var(--pad) 0;
+    text-align: right;
+  }
+
+  .kbd-hint {
+    font-family: var(--font-mono); font-size: 10px;
+    letter-spacing: 0.14em; color: var(--muted-fg);
+    text-align: center; margin-top: 22px;
+  }
+  .kbd-hint kbd {
+    font: inherit;
+    border: 1px solid var(--border); border-bottom-width: 2px;
+    border-radius: 4px; padding: 1px 5px;
+  }
+</style>
+</head>
+<body>
+<div class="frame" id="top">
+
+  <!-- NAV -->
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-brand" href="/">
+      <span class="mark">K</span>
+      <span>iamkhayyam</span>
+    </a>
+    <span class="nav-goto">
+      <select aria-label="Go to page" onchange="if(this.value)location.href=this.value">
+        <option value="" disabled selected>~/lost+found</option>
+        <option value="/">~/</option>
+        <option value="/work/">~/work</option>
+        <option value="/projects/">~/projects</option>
+        <option value="/speaking/">~/speaking</option>
+        <option value="/play/">~/play</option>
+        <option value="/learn/">~/learn</option>
+        <option value="/writing/">~/writing</option>
+      </select>
+    </span>
+    <div class="nav-right">
+      <a class="gh-stars" href="https://github.com/iamkhayyam" title="GitHub · @iamkhayyam">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.05c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.54.12-3.21 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.66 1.67.25 2.9.12 3.21.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+        @iamkhayyam
+      </a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- 404 HERO -->
+  <header class="hero hero-404">
+    <div class="dotgrid" aria-hidden="true"></div>
+
+    <div class="fig">FIG_404 · SIGNAL LOST</div>
+
+    <div class="hello-wrap" aria-label="404 — page not found">
+      <pre class="ascii-wordmark ascii-404" role="img" aria-label="404"
+><span class="ascii-line">██╗  ██╗ ██████╗ ██╗  ██╗</span
+><span class="ascii-line">██║  ██║██╔═████╗██║  ██║</span
+><span class="ascii-line">███████║██║██╔██║███████║</span
+><span class="ascii-line">╚════██║████╔╝██║╚════██║</span
+><span class="ascii-line">     ██║╚██████╔╝     ██║</span
+><span class="ascii-line">     ╚═╝ ╚═════╝      ╚═╝</span
+></pre>
+      <div class="hello-caption">SIGNED · NOBODY — THIS PAGE DOES NOT EXIST</div>
+    </div>
+
+    <p class="tagline">You found the one page here that isn't a <span class="fluid">World's First</span>.</p>
+  </header>
+
+  <!-- TRACE -->
+  <section aria-label="Request trace">
+    <div class="term" role="log">
+      <span class="t-line"><span class="ps">$</span> curl -I iamkhayyam.xyz<span id="reqPath">/…</span></span>
+      <span class="t-line out">HTTP/2 <span class="hard">404</span> · NOT_FOUND</span>
+      <span class="t-line"><span class="ps">$</span> locate --anywhere "<span id="reqPath2">…</span>"</span>
+      <span class="t-line out">0 results — not in YVR, not in LAX, not in LIS.</span>
+      <span class="t-line"><span class="ps">$</span> suggest --routes <span class="cursor" aria-hidden="true"></span></span>
+    </div>
+  </section>
+
+  <!-- ROUTES -->
+  <section aria-labelledby="routes-t">
+    <h2 class="sh" id="routes-t"><span>Known Good Routes</span><span class="more">7 indexed</span></h2>
+    <div class="list">
+      <a class="row" href="/"><span class="row-year">001</span><span class="row-title">Home<span class="row-sub">The whole story, one column</span></span><span class="row-meta">/</span></a>
+      <a class="row" href="/work/"><span class="row-year">002</span><span class="row-title">Work<span class="row-sub">Capabilities, experience, advisory</span></span><span class="row-meta">/work</span></a>
+      <a class="row" href="/projects/"><span class="row-year">003</span><span class="row-title">Projects<span class="row-sub">The award tour — 26× Cannes Lions, an Emmy</span></span><span class="row-meta">/projects</span></a>
+      <a class="row" href="/speaking/"><span class="row-year">004</span><span class="row-title">Speaking<span class="row-sub">SXSW, Consensus, IBC, CES, Slush</span></span><span class="row-meta">/speaking</span></a>
+      <a class="row" href="/play/"><span class="row-year">005</span><span class="row-title">Play<span class="row-sub">Concepts, sandboxes, DAOs</span></span><span class="row-meta">/play</span></a>
+      <a class="row" href="/learn/"><span class="row-year">006</span><span class="row-title">Learn<span class="row-sub">Near misses and research threads</span></span><span class="row-meta">/learn</span></a>
+      <a class="row" href="/writing/"><span class="row-year">007</span><span class="row-title">Writing<span class="row-sub">Two books, Token Wisdom, press</span></span><span class="row-meta">/writing</span></a>
+    </div>
+    <div class="routes-note">not every experiment ships — K</div>
+  </section>
+
+  <!-- FOOTER-LITE -->
+  <section aria-label="Get back">
+    <div class="ctas" style="justify-content:center;">
+      <a class="cta" href="/">← Back to base</a>
+      <a class="cta secondary" href="mailto:theusual@gmail.com?subject=Your%20404%20page%20sent%20me">Report a missing World's First</a>
+    </div>
+    <div class="kbd-hint">PRESS <kbd>H</kbd> TO GO HOME</div>
+  </section>
+
+</div>
+
+<script>
+  // Theme — same contract as every other page
+  (function () {
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+
+  // Echo the path that got the visitor here (textContent — never HTML)
+  (function () {
+    const path = window.location.pathname || '/unknown';
+    document.getElementById('reqPath').textContent = path;
+    document.getElementById('reqPath2').textContent = path;
+  })();
+
+  // H for home
+  window.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'h' && !e.metaKey && !e.ctrlKey && !e.altKey
+        && !/input|textarea|select/i.test(document.activeElement.tagName)) {
+      window.location.href = '/';
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# iamkhayyam.xyz — humans, crawlers, and language models all welcome.
+# LLM agents: start with /llms.txt (index) and /llms-full.txt (complete profile).
+
+User-agent: *
+Allow: /
+
+# Reference material and dev galleries — not site content
+Disallow: /chanhdai.com/
+Disallow: /assets.chanhdai.com/
+Disallow: /abs-0.twimg.com/
+Disallow: /127.0.0.1_8081/
+Disallow: /_linkedin/
+Disallow: /components/
+Disallow: /blocks/
+Disallow: /shared/
+
+Sitemap: https://iamkhayyam.xyz/sitemap.xml
