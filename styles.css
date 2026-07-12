@@ -956,16 +956,16 @@
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      color-mix(in oklab, #000 72%, transparent) 36%,
-      #000 65%,
+      transparent 32%,
+      #000 72%,
       #000 86%,
       transparent 100%
     );
             mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      color-mix(in oklab, #000 72%, transparent) 36%,
-      #000 65%,
+      transparent 32%,
+      #000 72%,
       #000 86%,
       transparent 100%
     );
