@@ -951,24 +951,26 @@
     background: transparent;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.65;
-    /* Fade in from the top of the section, hold through middle, fade out at bottom */
+    opacity: 0.70;
+    /* 0% at top, ~50% at "Book a call" (~36% down), full at 65%, fade at bottom */
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 38%,
-      #000 82%,
+      color-mix(in oklab, #000 72%, transparent) 36%,
+      #000 65%,
+      #000 86%,
       transparent 100%
     );
             mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      #000 38%,
-      #000 82%,
+      color-mix(in oklab, #000 72%, transparent) 36%,
+      #000 65%,
+      #000 86%,
       transparent 100%
     );
   }
-  /* Symmetric page-background feather — seamless blend on both themes */
+  /* Thin edge feather — hides the section boundary at very top and bottom */
   .contact-shader::before {
     content: "";
     position: absolute;
@@ -976,8 +978,8 @@
     background: linear-gradient(
       to bottom,
       var(--background) 0%,
-      transparent 32%,
-      transparent 72%,
+      transparent 14%,
+      transparent 86%,
       var(--background) 100%
     );
     z-index: 1;
