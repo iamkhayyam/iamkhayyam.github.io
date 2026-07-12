@@ -951,53 +951,37 @@
     background: transparent;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.55;
-    /* Hide top 55%, fade in through 75%, hold full, soft-fade the very bottom */
+    opacity: 0.65;
+    /* Fade in from the top of the section, hold through middle, fade out at bottom */
     -webkit-mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      transparent 55%,
-      #000 78%,
-      #000 96%,
-      color-mix(in oklab, #000 60%, transparent) 100%
+      #000 38%,
+      #000 82%,
+      transparent 100%
     );
             mask-image: linear-gradient(
       to bottom,
       transparent 0%,
-      transparent 55%,
-      #000 78%,
-      #000 96%,
-      color-mix(in oklab, #000 60%, transparent) 100%
+      #000 38%,
+      #000 82%,
+      transparent 100%
     );
   }
-  /* Light veil only over the shader band so nothing shows through the text zone */
+  /* Symmetric page-background feather — seamless blend on both themes */
   .contact-shader::before {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to bottom,
-      color-mix(in oklab, var(--background) 60%, transparent) 0%,
-      color-mix(in oklab, var(--background) 40%, transparent) 80%,
-      color-mix(in oklab, var(--background) 55%, transparent) 100%
+      var(--background) 0%,
+      transparent 32%,
+      transparent 72%,
+      var(--background) 100%
     );
     z-index: 1;
     pointer-events: none;
-    /* Only apply veil where the shader is */
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 55%,
-      #000 78%,
-      #000 100%
-    );
-            mask-image: linear-gradient(
-      to bottom,
-      transparent 0%,
-      transparent 55%,
-      #000 78%,
-      #000 100%
-    );
   }
   .contact-shader > *:not(canvas) { position: relative; z-index: 2; }
   /* Section headers on the shader read stronger */
