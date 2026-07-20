@@ -1168,6 +1168,9 @@
   /* Denser roster variant for the big list */
   .marquee.roster { gap: 28px; animation-duration: 80s; }
   .marquee.roster.reverse { animation-duration: 95s; }
+  /* Third row — forward like A but a different speed and a phase offset
+   * (negative delay) so it never marches in lockstep with A. */
+  .marquee.roster.offset { animation-duration: 68s; animation-delay: -34s; }
   .roster-meta {
     display: flex; justify-content: space-between;
     font-family: var(--font-mono); font-size: 10px;
