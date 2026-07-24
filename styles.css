@@ -370,7 +370,7 @@
   /* ─── Award Tour headline stats ─── */
   .stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     border: 1px dashed var(--line);
     border-radius: 10px;
     overflow: hidden;
@@ -406,6 +406,16 @@
     color: var(--muted-fg);
     margin-top: 8px;
   }
+  .stat-gp    .stat-num { color: #c084fc; }
+  .stat-gold  .stat-num { color: #f59e0b; }
+  .stat-silver .stat-num { color: #94a3b8; }
+  .stat-bronze .stat-num { color: #c2845a; }
+  @media (max-width: 720px) {
+    .stats { grid-template-columns: repeat(3, 1fr); }
+    .stat:nth-child(4) { border-left: 0; border-top: 1px dashed var(--line); }
+    .stat:nth-child(5),
+    .stat:nth-child(6) { border-top: 1px dashed var(--line); }
+  }
   @media (max-width: 540px) {
     .stat-num { font-size: 32px; }
     .stat { padding: 14px 6px 12px; }
@@ -422,6 +432,9 @@
   .award-mark { font-size: 14px; }
   .award-sub  { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); margin-top: 2px; }
   .award-year { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); }
+  .award-tier-label { background: var(--surface); border-radius: 4px; }
+  .award-indent { padding-left: 28px; }
+  .award-sub-inline { display: inline; margin-top: 0; }
 
   /* ─── Featured Publication Card (Token Wisdom) ─── */
   .pub-card {
