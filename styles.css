@@ -257,6 +257,36 @@
   .kv > div:nth-last-child(-n+4) { border-bottom: 0; }
   .kv a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
   .kv a:hover { text-decoration-color: currentColor; }
+
+  /* Overview → Calendar dropdown tray */
+  .cal-toggle { cursor: pointer; }
+  .cal-chev { display: inline-block; transition: transform .25s ease; }
+  .cal-toggle[aria-expanded="true"] .cal-chev { transform: rotate(180deg); }
+  .cal-tray {
+    display: grid; grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows .3s ease, margin-top .3s ease, visibility 0s linear .3s;
+  }
+  .cal-tray.open {
+    grid-template-rows: 1fr; margin-top: 12px;
+    visibility: visible;
+    transition: grid-template-rows .3s ease, margin-top .3s ease, visibility 0s;
+  }
+  .cal-tray-inner { min-height: 0; overflow: hidden; }
+  .cal-box {
+    border: 1px dashed var(--line); border-radius: 10px;
+    padding: 12px; background: var(--background);
+  }
+  .cal-loading, .cal-alt {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted-fg); margin: 0;
+  }
+  .cal-loading { padding: 24px 0; text-align: center; }
+  .cal-alt { padding-top: 10px; text-align: right; }
+  .cal-alt a { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    .cal-tray, .cal-tray.open, .cal-chev { transition: none; }
+  }
   .dot {
     width: 6px; height: 6px; border-radius: 50%;
     background: var(--success); display: inline-block; vertical-align: middle;

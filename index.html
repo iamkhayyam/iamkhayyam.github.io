@@ -206,10 +206,19 @@
     <div class="kv">
       <div class="k">Role</div>       <div>Founder &amp; President @ <a href="https://cachecow.ai">CacheCow Technologies</a></div>
       <div class="k">Focus</div>      <div>Frontier tech · Storytelling · World's Firsts</div>
-      <div class="k">Based</div>      <div>Pioneertown, CA · also YVR / LAX / LIS</div>
-      <div class="k">Local time</div> <div><span class="dot"></span><span id="localTime">--:-- --</span> PT</div>
+      <div class="k">Based</div>      <div>Calgary, AB (YYC)</div>
+      <div class="k">Local time</div> <div><span class="dot"></span><span id="localTime">--:-- --</span> <span id="localTz"></span></div>
       <div class="k">Email</div>      <div><a href="mailto:theusual@gmail.com">theusual@gmail.com</a></div>
-      <div class="k">Calendar</div>   <div><a href="https://cal.com/theusual/45min">Schedule a call →</a></div>
+      <div class="k">Calendar</div>   <div><a class="cal-toggle" id="calToggle" href="https://cal.com/theusual/45min" aria-controls="calTray" aria-expanded="false">Schedule a call <span class="cal-chev" aria-hidden="true">▾</span></a></div>
+    </div>
+    <div class="cal-tray" id="calTray">
+      <div class="cal-tray-inner">
+        <div class="cal-box">
+          <p class="cal-loading" id="calLoading">Loading calendar…</p>
+          <div id="calInline"></div>
+          <p class="cal-alt">45 min · <a href="https://cal.com/theusual/45min">Open in a new tab ↗</a></p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -544,15 +553,17 @@
     });
   })();
 
-  // Local time — Pioneertown (America/Los_Angeles)
+  // Local time — visitor's own clock and timezone
   (function () {
     const el = document.getElementById('localTime');
+    const tz = document.getElementById('localTz');
     function update() {
-      const now = new Date();
-      el.textContent = now.toLocaleTimeString('en-US', {
-        hour: 'numeric', minute: '2-digit',
-        timeZone: 'America/Los_Angeles'
-      });
+      const parts = new Intl.DateTimeFormat('en-US', {
+        hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+      }).formatToParts(new Date());
+      el.textContent = parts.filter(p => p.type !== 'timeZoneName').map(p => p.value).join('').trim();
+      const zone = parts.find(p => p.type === 'timeZoneName');
+      tz.textContent = zone ? zone.value : '';
     }
     update();
     setInterval(update, 30000);
@@ -615,6 +626,33 @@
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   Cal("init", "45min", {origin:"https://app.cal.com"});
   Cal.ns["45min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+<script>
+  // Overview → Calendar: dropdown tray with the Cal.com booking calendar inline (loaded on first open)
+  (function () {
+    const toggle = document.getElementById('calToggle');
+    const tray = document.getElementById('calTray');
+    if (!toggle || !tray || !window.Cal || !Cal.ns || !Cal.ns['45min']) return;
+    const cal = Cal.ns['45min'];
+    const theme = () => document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    let loaded = false;
+    toggle.setAttribute('role', 'button');
+    toggle.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      e.preventDefault();
+      const open = !tray.classList.contains('open');
+      tray.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open && !loaded) {
+        loaded = true;
+        cal('inline', { elementOrSelector: '#calInline', calLink: 'theusual/45min', layout: 'month_view', config: { layout: 'month_view', theme: theme() } });
+        cal('ui', { theme: theme(), hideEventTypeDetails: false, layout: 'month_view' });
+        cal('on', { action: 'linkReady', callback: () => { document.getElementById('calLoading').hidden = true; } });
+      }
+    });
+    const themeBtn = document.getElementById('themeToggle');
+    if (themeBtn) themeBtn.addEventListener('click', () => { if (loaded) setTimeout(() => cal('ui', { theme: theme() }), 0); });
+  })();
 </script>
 </body>
 </html>
