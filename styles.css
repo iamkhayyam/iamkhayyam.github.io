@@ -287,6 +287,94 @@
   @media (prefers-reduced-motion: reduce) {
     .cal-tray, .cal-tray.open, .cal-chev { transition: none; }
   }
+
+  /* ─── Header bio section ─── */
+  .bio-section { margin-top: 20px; text-align: center; }
+  .bio-hero {
+    font-family: var(--font-serif);
+    font-size: 20px; font-weight: 500;
+    letter-spacing: -0.01em; line-height: 1.2;
+    margin: 0 0 9px;
+  }
+  .bio-subhead {
+    font-size: 13px; color: var(--muted-fg);
+    line-height: 1.65; margin: 0 0 13px;
+    max-width: 54ch; margin-inline: auto;
+  }
+  .bio-bullets {
+    list-style: none; margin: 0 0 15px; padding: 0;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--muted-fg); text-align: left;
+    display: inline-block;
+  }
+  .bio-bullets li { padding: 2px 0 2px 14px; position: relative; }
+  .bio-bullets li::before { content: '·'; position: absolute; left: 3px; color: var(--line); }
+  .bio-bullets strong { color: var(--foreground); font-weight: 600; }
+  .bio-toggle {
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--muted-fg); cursor: pointer;
+    letter-spacing: 0.05em; display: inline-block;
+  }
+  .bio-toggle:hover { color: var(--foreground); }
+  .bio-chev { display: inline-block; transition: transform .25s ease; }
+  .bio-toggle[aria-expanded="true"] .bio-chev { transform: rotate(180deg); }
+  .bio-tray {
+    display: grid; grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows .3s ease, margin-top .3s ease, visibility 0s linear .3s;
+  }
+  .bio-tray.open {
+    grid-template-rows: 1fr; margin-top: 14px;
+    visibility: visible;
+    transition: grid-template-rows .3s ease, margin-top .3s ease, visibility 0s;
+  }
+  .bio-tray-inner { min-height: 0; overflow: hidden; }
+  .bio-box {
+    border: 1px dashed var(--line); border-radius: 10px;
+    padding: 14px 16px; background: var(--background);
+    text-align: left;
+  }
+  .bio-group { border-bottom: 1px dashed var(--line); }
+  .bio-group:last-child { border-bottom: 0; }
+  .bio-acc {
+    width: 100%; text-align: left; background: none; border: none;
+    padding: 9px 0; cursor: pointer;
+    font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted-fg);
+    display: flex; align-items: center; justify-content: space-between;
+    transition: color .15s;
+  }
+  .bio-acc:hover { color: var(--foreground); }
+  .bio-g-chev { display: inline-block; transition: transform .25s ease; flex-shrink: 0; }
+  .bio-acc[aria-expanded="false"] .bio-g-chev { transform: rotate(-90deg); }
+  .bio-acc-body {
+    display: grid; grid-template-rows: 1fr;
+    transition: grid-template-rows .25s ease;
+  }
+  .bio-acc-body.closed { grid-template-rows: 0fr; }
+  .bio-acc-inner { min-height: 0; overflow: hidden; }
+  .bio-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 6px 0; border-bottom: 1px dashed var(--line);
+  }
+  .bio-item:last-child { border-bottom: 0; padding-bottom: 8px; }
+  .bio-item:first-child { padding-top: 0; }
+  .bio-text { flex: 1; font-size: 12px; line-height: 1.6; color: var(--foreground); }
+  .bio-copy {
+    flex-shrink: 0; font-family: var(--font-mono); font-size: 9px;
+    letter-spacing: 0.06em; color: var(--muted-fg);
+    background: none; border: 1px dashed var(--line);
+    border-radius: 3px; padding: 2px 6px; cursor: pointer;
+    transition: color .15s, border-color .15s; white-space: nowrap;
+  }
+  .bio-copy:hover { color: var(--foreground); border-color: var(--foreground); }
+  .bio-copy.copied { color: var(--success); border-color: var(--success); }
+  @media (prefers-reduced-motion: reduce) {
+    .bio-tray, .bio-tray.open, .bio-chev, .bio-copy,
+    .bio-acc, .bio-g-chev, .bio-acc-body { transition: none; }
+  }
+
   .dot {
     width: 6px; height: 6px; border-radius: 50%;
     background: var(--success); display: inline-block; vertical-align: middle;
