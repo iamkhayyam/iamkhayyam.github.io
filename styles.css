@@ -625,6 +625,46 @@
     .pub-card { padding: 18px 16px 14px; }
   }
 
+  /* ─── Knowware Press showcase card ─── */
+  .kw-showcase {
+    display: block;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color .2s ease;
+  }
+  .kw-showcase:hover { border-color: color-mix(in oklab, var(--foreground) 24%, var(--border)); text-decoration: none; }
+  .kw-showcase-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px dashed var(--line);
+  }
+  .kw-showcase-meta {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 14px 16px 12px;
+  }
+  .kw-showcase-name {
+    font-family: var(--font-serif); font-weight: 500;
+    font-size: 15px; color: var(--foreground);
+    letter-spacing: -0.01em;
+  }
+  .kw-showcase-tag {
+    font-family: var(--font-mono); font-size: 9px;
+    color: var(--muted-fg); letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .kw-showcase-desc {
+    font-size: 12px; line-height: 1.45;
+    color: var(--muted-fg); margin-top: 4px;
+    text-wrap: pretty;
+  }
+  .kw-showcase-domain {
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--muted-fg); letter-spacing: 0.04em;
+    margin-top: 6px;
+  }
+
   /* ─── Knowware Press book card ─── */
   .kw-book-card {
     display: block;
