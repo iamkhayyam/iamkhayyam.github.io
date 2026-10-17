@@ -1,51 +1,71 @@
 /*
- * iamkhayyam.xyz — GitHub contribution grid
- * Fetches fresh contribution data via github-contributions-api.jogruber.de
- * (scrapes GitHub on request, no aggressive caching). Renders the 53×7
- * calendar into #ghGrid using .cell / .cell.l1..l4 for monochrome levels.
- *
- * Because we render from JSON, this reflects whatever the public profile
- * shows — including private contributions when the "Include private
- * contributions on my profile" setting is enabled.
+ * iamkhayyam.xyz — GitHub contribution grid (multi-account)
+ * Fetches all accounts in parallel via github-contributions-api.jogruber.de,
+ * merges by date (summing counts), recalculates levels from the combined
+ * distribution, then renders the 53×7 calendar with the same pop-in animation.
  */
 (async function () {
   var grid = document.getElementById('ghGrid');
   var totalEl = document.getElementById('ghTotal');
   if (!grid) return;
 
-  var username = grid.getAttribute('data-username') || 'iamkhayyam';
+  var attr = grid.getAttribute('data-usernames') || grid.getAttribute('data-username') || 'iamkhayyam';
+  var usernames = attr.split(',').map(function (u) { return u.trim(); }).filter(Boolean);
+  var API = 'https://github-contributions-api.jogruber.de/v4/';
 
   try {
-    var res = await fetch(
-      'https://github-contributions-api.jogruber.de/v4/' + username + '?y=last',
-      { cache: 'no-store' }
+    // Fetch all accounts in parallel
+    var responses = await Promise.all(
+      usernames.map(function (u) {
+        return fetch(API + u + '?y=last', { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : { contributions: [] }; })
+          .catch(function () { return { contributions: [] }; });
+      })
     );
-    if (!res.ok) throw new Error('http ' + res.status);
-    var data = await res.json();
-    var contributions = data.contributions || [];
-    var totalLast =
-      (data.total && (data.total.lastYear || data.total[Object.keys(data.total).pop()])) ||
-      contributions.reduce(function (a, d) { return a + (d.count || 0); }, 0);
 
-    if (totalEl) totalEl.textContent = totalLast.toLocaleString();
+    // Merge by date — sum counts across all accounts
+    var byDate = {};
+    responses.forEach(function (data) {
+      (data.contributions || []).forEach(function (d) {
+        if (!byDate[d.date]) byDate[d.date] = 0;
+        byDate[d.date] += (d.count || 0);
+      });
+    });
 
-    // Anchor to today (the fetch date). Drop any future-dated cells the
-    // API may pad the current week with, then take exactly the trailing
-    // 365 days so the graph ends on today. Chunked 7 rows, column-major.
+    // Anchor to today, take trailing 365 days
     var t = new Date();
     var todayStr = t.getFullYear() + '-' +
       String(t.getMonth() + 1).padStart(2, '0') + '-' +
       String(t.getDate()).padStart(2, '0');
-    var days = contributions
-      .filter(function (d) { return d.date <= todayStr; })
-      .slice(-365);
+
+    // Collect all dates in sorted order, filter to <= today, last 365
+    var allDates = Object.keys(byDate).sort();
+    var days = allDates
+      .filter(function (d) { return d <= todayStr; })
+      .slice(-365)
+      .map(function (date) { return { date: date, count: byDate[date] }; });
+
+    // Recalculate levels from combined distribution (quartiles of non-zero days)
+    var nonZero = days.map(function (d) { return d.count; }).filter(function (c) { return c > 0; }).sort(function (a, b) { return a - b; });
+    var q1 = nonZero[Math.floor(nonZero.length * 0.25)] || 1;
+    var q2 = nonZero[Math.floor(nonZero.length * 0.50)] || 2;
+    var q3 = nonZero[Math.floor(nonZero.length * 0.75)] || 4;
+    function level(count) {
+      if (!count) return 0;
+      if (count <= q1) return 1;
+      if (count <= q2) return 2;
+      if (count <= q3) return 3;
+      return 4;
+    }
+
+    var total = days.reduce(function (a, d) { return a + d.count; }, 0);
+    if (totalEl) totalEl.textContent = total.toLocaleString();
+
     var html = days
       .map(function (d, i) {
-        var lvl = d.level || 0;
+        var lvl = level(d.count);
         var cls = 'cell' + (lvl ? ' l' + lvl : '');
-        var title = d.date + ': ' + (d.count || 0) + ' contribution' + (d.count === 1 ? '' : 's');
-        // Stagger: pop in week by week (column-major), then a diagonal
-        // glint sweeps through after the wave lands.
+        var title = d.date + ': ' + d.count + ' contribution' + (d.count === 1 ? '' : 's');
         var col = Math.floor(i / 7);
         var row = i % 7;
         var pop = col * 14;
@@ -55,8 +75,7 @@
       .join('');
     grid.innerHTML = html;
 
-    // Month labels across the top, aligned to the week column where each
-    // month begins. Year marked on the first label and every January.
+    // Month labels
     var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     var labels = [];
@@ -74,13 +93,13 @@
         labels.push('<span style="grid-column: ' + (c + 1) + ' / span ' + Math.min(5, 53 - c) + '">' + MONTHS[m] + '</span>');
         lastLabelCol = c;
       }
-      // Year label at the column where each new year begins
       if (y !== prevYear) {
         years.push('<span style="grid-column: ' + (c + 1) + ' / span ' + Math.min(6, 53 - c) + '">' + y + '</span>');
         prevYear = y;
       }
       prevMonth = m;
     }
+
     var prevMonths = grid.parentNode.querySelector('.gh-months');
     if (prevMonths) prevMonths.remove();
     var monthsEl = document.createElement('div');
@@ -97,8 +116,6 @@
     yearsEl.innerHTML = years.join('');
     grid.parentNode.insertBefore(yearsEl, grid.nextSibling);
 
-    // On narrow viewports the grid overflows horizontally — land on the
-    // most recent weeks (right edge), not July of last year.
     var wrap = grid.closest('.gh-chart-wrap') || grid.parentElement;
     if (wrap && wrap.scrollWidth > wrap.clientWidth) {
       wrap.scrollLeft = wrap.scrollWidth - wrap.clientWidth;
@@ -106,7 +123,7 @@
   } catch (err) {
     grid.outerHTML =
       '<div style="text-align:center;padding:24px 0;font-family:var(--font-mono);font-size:12px;color:var(--muted-fg);">' +
-      'Contribution graph unavailable — <a href="https://github.com/' + username + '">see github.com/' + username + '</a>' +
+      'Contribution graph unavailable — <a href="https://github.com/iamkhayyam">see GitHub</a>' +
       '</div>';
   }
 })();
