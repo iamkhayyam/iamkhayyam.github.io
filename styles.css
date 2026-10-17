@@ -1044,7 +1044,21 @@
   }
   @media (hover: none), (pointer: coarse) { .play-peek { display: none; } }
   .play-grid--1 { grid-template-columns: 1fr; }
-  .play-grid--1 .play-item { border-left: 0; }
+  .play-grid--1 .play-item {
+    border-left: 0;
+    text-align: left;
+    align-items: flex-start;
+    padding: 22px 20px 18px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    column-gap: 14px;
+  }
+  .play-grid--1 .play-glyph { align-self: center; font-size: 22px; }
+  .play-grid--1 .play-name  { font-size: 17px; align-self: center; }
+  .play-grid--1 .play-tag   { width: 100%; margin-left: 36px; }
+  .play-grid--1 .play-desc  { width: 100%; margin-left: 0; margin-top: 10px; max-width: 56ch; font-size: 13px; }
+  .play-grid--1 .play-domain { width: 100%; margin-left: 0; }
   .play-grid--2 { grid-template-columns: repeat(2, 1fr); }
   .play-grid--2 .play-item:nth-child(n+3) { border-top: 0; }
   @media (max-width: 540px) {
