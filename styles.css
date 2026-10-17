@@ -625,6 +625,68 @@
     .pub-card { padding: 18px 16px 14px; }
   }
 
+  /* ─── Knowware Press book card ─── */
+  .kw-book-card {
+    display: block;
+    position: relative;
+    background: #0d0c0b;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 28px 26px 22px;
+    transition: transform .2s ease;
+    background-image:
+      radial-gradient(circle at 85% 110%, rgba(255,255,255,0.045) 0%, transparent 50%),
+      radial-gradient(rgba(255,255,255,0.03) 0.6px, transparent 0.6px);
+    background-size: auto, 22px 22px;
+  }
+  .kw-book-card:hover { text-decoration: none; transform: translateY(-2px); }
+  .kw-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 18px;
+  }
+  .kw-title {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 6vw, 42px);
+    line-height: 1.0;
+    letter-spacing: -0.025em;
+    font-weight: 500;
+    color: #f0ede8;
+    margin: 0 0 16px;
+  }
+  .kw-title em {
+    font-style: italic;
+    color: rgba(240,237,232,0.62);
+  }
+  .kw-lede {
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.45);
+    max-width: 46ch;
+    margin: 0 0 24px;
+  }
+  .kw-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(255,255,255,0.12);
+  }
+  .kw-domain {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+  }
+  .kw-read {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: #f0ede8;
+  }
+
   /* ─── Capabilities (2-column bento) ─── */
   .caps {
     display: grid;
