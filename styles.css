@@ -1043,6 +1043,8 @@
     border-radius: 5px;
   }
   @media (hover: none), (pointer: coarse) { .play-peek { display: none; } }
+  .play-grid--1 { grid-template-columns: 1fr; }
+  .play-grid--1 .play-item { border-left: 0; }
   .play-grid--2 { grid-template-columns: repeat(2, 1fr); }
   .play-grid--2 .play-item:nth-child(n+3) { border-top: 0; }
   @media (max-width: 540px) {
