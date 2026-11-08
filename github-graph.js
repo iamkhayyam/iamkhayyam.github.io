@@ -17,7 +17,7 @@
     // Fetch all accounts in parallel
     var responses = await Promise.all(
       usernames.map(function (u) {
-        return fetch(API + u + '?y=last', { cache: 'no-store' })
+        return fetch(API + u + '?y=last')
           .then(function (r) { return r.ok ? r.json() : { contributions: [] }; })
           .catch(function () { return { contributions: [] }; });
       })
