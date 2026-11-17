@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hire — Khayyam Wakil</title>
+<meta name="description" content="Bring a problem, get finished work back. An MCP your AI agent can call: Khayyam Wakil's way of solving problems, reduced to tools.">
+<meta name="theme-color" content="#ffffff">
+<meta name="author" content="Khayyam Wakil">
+<meta property="og:title" content="Hire — Khayyam Wakil">
+<meta property="og:description" content="Bring a problem, get finished work back. An MCP your AI agent can call: Khayyam Wakil's way of solving problems, reduced to tools.">
+<meta property="og:url" content="https://iamkhayyam.github.io/hire/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://iamkhayyam.github.io/og.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="KHAYYAM WAKIL in ASCII block letters on a dark terminal card.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@iamkhayyam">
+<meta name="twitter:title" content="Hire — Khayyam Wakil">
+<meta name="twitter:description" content="Bring a problem, get finished work back. An MCP your AI agent can call: Khayyam Wakil's way of solving problems, reduced to tools.">
+<meta name="twitter:image" content="https://iamkhayyam.github.io/og.png">
+<link rel="canonical" href="https://iamkhayyam.github.io/hire/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebPage",
+ "@id": "https://iamkhayyam.github.io/hire/#page",
+ "url": "https://iamkhayyam.github.io/hire/",
+ "name": "Hire — Khayyam Wakil",
+ "description": "Bring a problem, get finished work back. An MCP your AI agent can call: Khayyam Wakil's way of solving problems, reduced to tools.",
+ "isPartOf": {
+  "@id": "https://iamkhayyam.github.io/#website"
+ },
+ "about": {
+  "@id": "https://iamkhayyam.github.io/#khayyam"
+ },
+ "breadcrumb": {
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+   {
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://iamkhayyam.github.io/"
+   },
+   {
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Hire",
+    "item": "https://iamkhayyam.github.io/hire/"
+   }
+  ]
+ }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  /* Per-page overrides for subpages */
+  .subhero {
+    padding: 40px 20px 28px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .subhero .fig {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted-fg);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .subhero h1 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  .subhero .lede {
+    color: var(--muted-fg);
+    font-size: 15px;
+    margin: 0;
+    max-width: 55ch;
+  }
+  .breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted-fg);
+    padding: 8px 20px 0;
+  }
+  .breadcrumb a { color: var(--muted-fg); }
+  .breadcrumb a:hover { color: var(--foreground); }
+  @media (max-width: 540px) {
+    .subhero h1 { font-size: 30px; }
+    .subhero { padding: 28px 20px 20px; }
+  }
+  /* /hire: form, result and address box. Tokens only. */
+  .hire-form label { display: block; font-size: 13.5px; font-weight: 600; margin: 0 0 8px; }
+  .hire-form textarea {
+    width: 100%; min-height: 96px; resize: vertical; padding: 10px 12px;
+    border: 1px solid var(--border); border-radius: 6px;
+    background: var(--background); color: var(--foreground);
+    font-family: var(--font-sans); font-size: 14px; line-height: 1.5;
+  }
+  .hire-form textarea:focus-visible, .cta:focus-visible { outline: 2px solid var(--foreground); outline-offset: 2px; }
+  .hire-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 10px; }
+  .hire-hint { font-family: var(--font-mono); font-size: 11px; color: var(--muted-fg); }
+  .hire-out {
+    margin-top: 14px; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 6px;
+    font-family: var(--font-mono); font-size: 12px; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere;
+  }
+  .hire-out[hidden] { display: none; }
+  .hire-out.err { font-family: var(--font-sans); font-size: 13.5px; border-style: solid; border-color: var(--foreground); }
+  .hire-note { margin: 0 0 12px; font-size: 13.5px; color: var(--muted-fg); max-width: 58ch; }
+  .hire-addr { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .hire-addr code {
+    flex: 1 1 240px; padding: 10px 12px; border: 1px dashed var(--line); border-radius: 6px;
+    background: var(--muted); font-family: var(--font-mono); font-size: 12px; overflow-wrap: anywhere;
+  }
+  .row-meta.is-open { color: var(--success); border-color: var(--success); }
+  .row.is-later .row-title { color: var(--muted-fg); }
+  .cta[disabled] { opacity: 0.55; cursor: default; }
+</style>
+</head>
+<body>
+<div class="frame" id="top">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav-brand" href="../">
+      <span class="mark">K</span>
+      <span>iamkhayyam</span>
+    </a>
+    <span class="nav-goto">
+      <select aria-label="Go to page" onchange="if(this.value)location.href=this.value">
+        <option value="/">~/</option>
+        <option value="/work/">~/work</option>
+        <option value="/projects/">~/projects</option>
+        <option value="/speaking/">~/speaking</option>
+        <option value="/play/">~/play</option>
+        <option value="/learn/">~/learn</option>
+        <option value="/writing/">~/writing</option>
+        <option value="/hire/" selected>~/hire</option>
+      </select>
+    </span>
+    <div class="nav-right">
+      <a class="gh-stars" href="https://github.com/iamkhayyam" title="GitHub · @iamkhayyam">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.05c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.24 1.83 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.66-.3-5.47-1.33-5.47-5.94 0-1.31.47-2.38 1.24-3.22-.13-.31-.54-1.54.12-3.21 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.29-1.23 3.29-1.23.66 1.67.25 2.9.12 3.21.77.84 1.24 1.91 1.24 3.22 0 4.62-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+        @iamkhayyam
+      </a>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="breadcrumb">← <a href="../">home</a> · <span class="mono">/hire</span></div>
+
+  <header class="subhero">
+    <span class="fig">HIRE · PROBLEM IN · FINISHED WORK OUT</span>
+    <h1>Hire the MCP</h1>
+    <p class="lede">You are not hiring me. You are hiring my MCP: twenty-plus years of solving problems, reduced to tools your AI agent can call. Bring a problem. Get finished work back, in the chat you are already in.</p>
+  </header>
+
+  <!-- SCOPE -->
+  <section id="scope" aria-labelledby="scope-t">
+    <h2 class="sh" id="scope-t"><span>Scope a problem</span><span class="n">FREE</span></h2>
+    <form class="hire-form" id="scopeForm" novalidate>
+      <label for="problem">What is the problem?</label>
+      <textarea id="problem" name="problem" maxlength="4000" placeholder="We have a board memo arguing for a second product line. I need to know where it breaks before Thursday."></textarea>
+      <div class="hire-actions">
+        <button class="cta" type="submit" id="scopeGo">Scope it</button>
+        <span class="hire-hint">A fit and a next step. No part of the answer.</span>
+      </div>
+    </form>
+    <div class="hire-out" id="scopeOut" role="status" aria-live="polite" hidden></div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="services-t">
+    <h2 class="sh" id="services-t"><span>Services</span><span class="n" id="servicesN">…</span></h2>
+    <p class="hire-note" id="servicesNote">You get the result, not a lesson. Nothing here explains how the work is done.</p>
+    <div class="list" id="servicesList"></div>
+    <noscript><p class="hire-note">The list of services loads with JavaScript. Your AI agent can read it directly from the MCP.</p></noscript>
+  </section>
+
+  <!-- PAY -->
+  <section id="pay" aria-labelledby="pay-t">
+    <h2 class="sh" id="pay-t"><span>How you pay</span><span class="n">NOT SWITCHED ON</span></h2>
+    <div class="kv">
+      <div class="k">People</div><div>Card, through Stripe</div>
+      <div class="k">Agents</div><div>x402 · USDC on Base</div>
+      <div class="k">Prices</div><div>Not set yet</div>
+      <div class="k">Today</div><div>Free tools only</div>
+    </div>
+  </section>
+
+  <!-- AGENTS -->
+  <section id="agents" aria-labelledby="agents-t">
+    <h2 class="sh" id="agents-t"><span>Connect your agent</span><span class="n">MCP</span></h2>
+    <p class="hire-note">Add this address to your AI agent as a remote MCP server. It will find <span class="mono">list_services</span> and <span class="mono">scope_this</span>, and the career this MCP is reduced from at <span class="mono">record://khayyam</span>.</p>
+    <div class="hire-addr">
+      <code id="mcpUrl">…</code>
+      <button class="cta secondary" type="button" id="mcpCopy">Copy address</button>
+    </div>
+  </section>
+
+
+  <footer class="contact-shader" aria-label="Site footer">
+    <canvas class="signature-shader" id="shaderCanvas" aria-hidden="true"></canvas>
+    <p class="contact-p" style="text-align: center;">Working on a <strong>World's First</strong>? — <a href="mailto:theusual@gmail.com">Say hello</a></p>
+    <div class="contact-meta">
+      © <span id="year">2026</span> · Made in CAN / USA / SUI / IND · <a href="mailto:theusual@gmail.com">theusual@gmail.com</a> · <a href="https://www.shadertoy.com/view/lsX3WH" title="Shader by Reinder Nijhoff — CC BY-NC-SA 4.0">◈</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    const root = document.documentElement;
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', stored || (prefersDark ? 'dark' : 'light'));
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  })();
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Glow Card cursor tracking (used on /work)
+  (function () {
+    const grid = document.getElementById('glowGrid');
+    if (!grid) return;
+    grid.addEventListener('pointermove', (e) => {
+      const card = e.target.closest('.glow-card');
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+    });
+  })();
+</script>
+<script>
+  // The MCP runs on Cloudflare. This page is only its front door.
+  (function () {
+    const API = ['localhost', '127.0.0.1'].includes(location.hostname) ? 'http://localhost:8797' : 'https://iamkhayyam-mcp.theusual.workers.dev';
+    const DOWN = 'The MCP is not answering right now. Try again in a minute.';
+    const $ = (id) => document.getElementById(id);
+    const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+    const SHORT = { 'Instant': 'NOW', 'Minutes': 'MIN', '48 hours': '48H', 'Days': 'DAYS', 'Quoted': 'QUOTE' };
+
+    fetch(API + '/services.json').then((r) => r.json()).then((d) => {
+      const list = $('servicesList');
+      for (const s of d.services) {
+        const row = el('div', 'row' + (s.status === 'Later' ? ' is-later' : ''));
+        row.append(el('span', 'row-year', SHORT[s.turnaround] || s.turnaround));
+        const title = el('span', 'row-title', s.name);
+        title.append(el('span', 'row-sub', s.returns));
+        row.append(title, el('span', 'row-meta' + (s.status === 'Open' ? ' is-open' : ''), s.status));
+        list.append(row);
+      }
+      $('servicesN').textContent = d.services.length;
+      $('mcpUrl').textContent = d.mcp;
+    }).catch(() => {
+      $('servicesN').textContent = '—';
+      $('servicesNote').textContent = DOWN;
+      $('mcpUrl').textContent = API + '/mcp';
+    });
+
+    const out = $('scopeOut'), go = $('scopeGo');
+    const show = (text, isError) => { out.hidden = false; out.className = 'hire-out' + (isError ? ' err' : ''); out.textContent = text; };
+    $('scopeForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      go.disabled = true; go.textContent = 'Scoping…';
+      try {
+        const res = await fetch(API + '/scope', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ problem: $('problem').value }) });
+        const data = await res.json();
+        show(data.text, !res.ok);
+      } catch { show(DOWN, true); }
+      finally { go.disabled = false; go.textContent = 'Scope it'; }
+    });
+
+    const copy = $('mcpCopy');
+    copy.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText($('mcpUrl').textContent); copy.textContent = 'Copied'; }
+      catch { copy.textContent = 'Select and copy by hand'; }
+      setTimeout(() => { copy.textContent = 'Copy address'; }, 1800);
+    });
+  })();
+</script>
+<script src="../shader-footer.js" defer></script>
+</body>
+</html>
