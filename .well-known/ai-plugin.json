@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Khayyam Wakil — Contact & Book",
+  "name_for_model": "iamkhayyam_contact",
+  "description_for_human": "Send Khayyam a message or book a call.",
+  "description_for_model": "Actions for reaching Khayyam Wakil (iamkhayyam.xyz). Use send_message to deliver a message by email; use the schedule link to direct someone to book a call. No authentication required.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://iamkhayyam.xyz/openapi.json"
+  },
+  "logo_url": "https://iamkhayyam.xyz/og.png",
+  "contact_email": "theusual@gmail.com",
+  "legal_info_url": "https://iamkhayyam.xyz/"
+}
