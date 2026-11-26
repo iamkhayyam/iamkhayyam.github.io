@@ -1,0 +1,82 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "iamkhayyam.xyz agent actions",
+    "description": "Agent-callable actions for reaching Khayyam Wakil. POST /contact to send a message; visit the schedule URL to book a call.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://iamkhayyam-agent.theusual.workers.dev",
+      "description": "Contact worker"
+    }
+  ],
+  "paths": {
+    "/contact": {
+      "post": {
+        "operationId": "send_message",
+        "summary": "Send Khayyam a message",
+        "description": "Delivers a message to Khayyam Wakil by email. He typically responds within 24–48 hours. For immediate scheduling, use the cal.com link at https://ical.com/theusual.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["message"],
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Sender name or agent/app identifier (optional)"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Reply-to email address so Khayyam can respond (optional but recommended)"
+                  },
+                  "message": {
+                    "type": "string",
+                    "maxLength": 2000,
+                    "description": "The message body"
+                  },
+                  "context": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "description": "Optional context about the agent or use case (e.g. 'referred from LinkedIn', 'AI assistant on company site')"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message delivered",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "schedule": {
+                      "type": "string",
+                      "description": "URL to book a call directly"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request (missing required fields)"
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Full profile",
+    "url": "https://iamkhayyam.xyz/llms-full.txt"
+  }
+}
