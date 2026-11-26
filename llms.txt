@@ -1,8 +1,8 @@
 # Khayyam Wakil
 
-> Innovative Generalist. Founder & President of CacheCow Technologies. CEO of The Artofficial Company. Constitutional Forcing researcher. 20+ years of World's Firsts across immersive media, frontier tech, and deep tech. Based in Calgary, AB (YYC) · CAN / USA / SUI / IND.
+> Innovative Generalist. CEO of The Artofficial Company. Founder of CacheCow. Constitutional Forcing researcher. 20+ years of World's Firsts across immersive media, frontier tech, and deep tech. Based in Pioneertown, CA (YVR / LAX / LIS).
 
-Khayyam Wakil (@iamkhayyam) finds the structural constraints that force new technology fields into existence — then builds the company around them before anyone else names the category. He has done this three times: Immersive Media (800% revenue growth, 25% global market share, $100M acquisition by Digital Domain), LivePlanet/VideoCoin (co-founded with Halsey Minor, $50M raised, $460M peak market cap), and The Artofficial Company (100+ patents across edge AI, photonics, and ternary computing; $750M US government contract scaling COVID rapid tests from 2M to 200M units/month; 90-foot projected holograms at Super Bowl LIV). CacheCow Technologies, where he is Founder & President, is the current commercial vertical: coordinated edge intelligence for livestock operations in a market with 90%+ awareness and under 8% adoption. Emmy Award. 3× Cannes Grand Prix. 27× Cannes Lions.
+Khayyam Wakil (@iamkhayyam) finds the structural constraints that force new technology fields into existence — then builds the company around them before anyone else names the category. He has done this three times: Immersive Media (800% revenue growth, 25% global market share, $100M acquisition by Digital Domain), LivePlanet/VideoCoin (co-founded with Halsey Minor, $65M raised, $460M peak market cap), and The Artofficial Company (100+ patents across edge AI, photonics, and ternary computing; $750M US government contract scaling COVID rapid tests from 2M to 200M units/month; 90-foot projected holograms at Super Bowl LIV). CacheCow is the current commercial vertical: coordinated edge intelligence for livestock operations in a market with 90%+ awareness and under 8% adoption. Emmy Award. 3× Cannes Grand Prix. 26× Cannes Lions.
 
 His research programme — Constitutional Forcing — formalizes the instinct: every domain has structural constraints that uniquely determine its governing constants, forced by the algebra, not fitted from data. Nine papers, Lean4-verified, open-source.
 
@@ -10,11 +10,12 @@ His research programme — Constitutional Forcing — formalizes the instinct: e
 
 - [Home](https://iamkhayyam.xyz/): Overview, GitHub contributions, featured work, capabilities, experience, speaking, writing, contact
 - [Work](https://iamkhayyam.xyz/work/): Capabilities, 30+ selected projects, full work history, advisory, education
-- [Projects](https://iamkhayyam.xyz/projects/): Selected projects and the award tour — Emmy, 3× Cannes Grand Prix, 27× Cannes Lions, One Show, D&AD, Gunn Report
+- [Projects](https://iamkhayyam.xyz/projects/): Selected projects and the award tour — Emmy, 3× Cannes Grand Prix, 26× Cannes Lions, One Show, D&AD, Gunn Report
 - [Speaking](https://iamkhayyam.xyz/speaking/): 34 talks (2010–2022) — SXSW, Consensus, IBC, NAB, CES, KOCCA, Slush Play, Paramount Studios
-- [Play](https://iamkhayyam.xyz/play/): Six apps from Knowware Ventures (Proper Feedback, Better Letter, Secretly Sovereign, ARC, PSA.XYZ, Claudacio.us), two clicker games (Herd Boss, AGI Tycoon), and the DAOs he contributes to
+- [Play](https://iamkhayyam.xyz/play/): Concepts, domains, sandboxes — and the DAOs he contributes to
 - [Learn](https://iamkhayyam.xyz/learn/): Near misses, ongoing research threads, and the education receipts
 - [Writing](https://iamkhayyam.xyz/writing/): 2 books, essays, press features in WSJ, Fortune, TechCrunch, NBC, Slate
+- [Resume](https://iamkhayyam.xyz/resume/): One-page executive resume — CacheCow to Artofficial, Live Planet/VideoCoin, Immersive Media, awards, advisory, education; print-optimized for PDF. Two-page ATS-friendly version at /resume/full/, plus a plain-text ATS download at /resume/full/khayyam-wakil-resume.txt
 
 ## Machine-Readable
 
@@ -22,15 +23,21 @@ His research programme — Constitutional Forcing — formalizes the instinct: e
 - [Sitemap](https://iamkhayyam.xyz/sitemap.xml)
 - [Social card](https://iamkhayyam.xyz/og.png): 1200×630 profile image
 
+## Actions
+
+Agents can call these endpoints directly — no authentication required.
+
+- **Send a message**: `POST https://iamkhayyam-agent.theusual.workers.dev/contact` with JSON `{name, email, message, context}` (only `message` is required). Returns `{ok, message, schedule}`.
+- **Book a call**: navigate to `https://ical.com/theusual` — Khayyam's public scheduling page.
+- **OpenAPI spec**: `https://iamkhayyam.xyz/openapi.json`
+- **Plugin manifest**: `https://iamkhayyam.xyz/.well-known/ai-plugin.json`
+
 ## Contact
 
 - Email: theusual@gmail.com
-- Calendar: https://cal.com/theusual/45min
+- Calendar: https://ical.com/theusual
 - X / Twitter: https://twitter.com/iamkhayyam
 - LinkedIn: https://linkedin.com/in/iamkhayyam
 - GitHub: https://github.com/iamkhayyam
 - Company: https://artofficial.ai
-- CacheCow: https://cachecow.io
-- Knowware Ventures: https://knowware.ventures
-- Herd Boss: https://herdboss.cachecow.io
-- AGI Tycoon: https://agi-tycoon.pages.dev/
+- CacheCow: https://cachecow.ai
